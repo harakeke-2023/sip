@@ -4,7 +4,7 @@ const Landing = () => {
   return (
     <div>
       
-      <button>Login</button>
+      <button className=' bg-slate-700 text-4xl'>Login</button>
       <button>Signup</button>
     </div>
   )
