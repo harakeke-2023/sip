@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react'
 
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from '../config/Authenticated'
+import { addUser, findUser } from '../apis/users'
 
 function Navbar() {
   const { logout, loginWithRedirect, user } = useAuth0()
   useEffect(() => {
     console.log(user)
+    if (user?.email) {
+      findUser(user?.email).then((res) => {
+        console.log(res)
+      })
+    }
   }, [user])
   useEffect(() => {
     console.log(user)
