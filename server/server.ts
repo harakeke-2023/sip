@@ -1,22 +1,20 @@
 import express from 'express'
-import path from "path"
+import path from 'path'
 import { join } from 'node:path'
 
-import fruitRoutes from './routes/fruits'
+import categories from './routes/categories'
 import authRoutes from './routes/auth'
-
 
 const server = express()
 
 server.use(express.json())
 server.use(express.static(join(__dirname, 'public')))
 
-server.use('/api/v1/fruits', fruitRoutes)
+server.use('/api/v1/categories', categories)
 server.use('api/v1/auth', authRoutes)
 server.get('*', (req, res) => {
   const appPath = path.join(__dirname, 'public', 'index.html')
   res.sendFile(appPath)
 })
-
 
 export default server
