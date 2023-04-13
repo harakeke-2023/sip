@@ -6,10 +6,13 @@ export function checkUser(email: string, db = connection) {
 }
 
 export function getData(
-  dbName: 'categories' | 'cards',
+  dbName: 'users' | 'categories' | 'cards',
   userId: number,
   db = connection
 ): Promise<CombinedData[]> {
+  if (dbName === 'users') {
+    return db('users').where('id', userId).select()
+  }
   return db(dbName).where('user_id', userId).select()
 }
 
