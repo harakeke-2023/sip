@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from '../config/Authenticated'
 
@@ -68,7 +69,15 @@ function Navbar() {
 
               <IfAuthenticated>
                 <div>
-                  <button onClick={handleSignOut}>Logout</button>
+                  <button
+                    onClick={handleSignOut}
+                    className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Log Out
+                  </button>
+
+                  <img className=" rounded-full  w-14" src={user?.picture} />
+
                   {user && <p>Signed in as: {user?.name}</p>}
                 </div>
               </IfAuthenticated>
