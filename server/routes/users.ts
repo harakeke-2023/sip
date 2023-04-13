@@ -4,7 +4,7 @@ import * as db from '../db/db'
 
 const router = express.Router()
 
-router.get('/:email', async (req, res) => {
+router.get('/email/:email', async (req, res) => {
   try {
     const data = await db.checkUser(req.params.email)
     res.json(data)
