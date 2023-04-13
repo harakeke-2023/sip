@@ -2,18 +2,29 @@ import React, { useEffect, useState, Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from '../config/Authenticated'
+import { addUser, findUser } from '../apis/users'
 import { Link } from 'react-router-dom'
+import { useStateContext } from '../context/StateContext'
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 function Navbar() {
   const { logout, loginWithRedirect, user } = useAuth0()
-  const [showMenu, setShowMenu] = useState(false)
+
+  const { userDetail, setUserDetail } = useStateContext()
 
   useEffect(() => {
     console.log(user)
-  }, [user])
+    if (user?.email) {
+      findUser(user?.email).then((res) => {
+        console.log(res)
+      })
+      setUserDetail(user)
+    }
+
+    console.log(userDetail)
+  }, [user, userDetail])
 
   const handleSignOut = () => {
     console.log('sign out')
@@ -23,10 +34,6 @@ function Navbar() {
   const handleSignIn = () => {
     console.log('sign in')
     loginWithRedirect()
-  }
-
-  const handleMenu = () => {
-    setShowMenu((prev) => !prev)
   }
 
   return (
