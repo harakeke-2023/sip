@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState, Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from '../config/Authenticated'
+import { Link } from 'react-router-dom'
 
+function classNames(...classes: any[]) {
+  return classes.filter(Boolean).join(' ')
+}
 function Navbar() {
   const { logout, loginWithRedirect, user } = useAuth0()
+  const [showMenu, setShowMenu] = useState(false)
+
   useEffect(() => {
     console.log(user)
   }, [user])
-  useEffect(() => {
-    console.log(user)
-  }, [])
+
   const handleSignOut = () => {
     console.log('sign out')
     logout()
@@ -20,9 +24,14 @@ function Navbar() {
     console.log('sign in')
     loginWithRedirect()
   }
+
+  const handleMenu = () => {
+    setShowMenu((prev) => !prev)
+  }
+
   return (
     <>
-      <nav className="m-4">
+      <nav>
         <div className="max-w-screen flex items-center justify-between mx-auto p-4">
           <a href="#" className="flex items-center">
             <img
@@ -35,55 +44,110 @@ function Navbar() {
             </span>
           </a>
 
-          <button
-            data-collapse-toggle="navbar-multi-level"
-            type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-multi-level"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-6 h-6"
-              aria-hidden="true"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </button>
           <div className="relative inline-block text-left">
-            <div>
+            <div className="max-h-10">
               <IfNotAuthenticated>
                 <button
                   onClick={handleSignIn}
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                  className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                 >
                   Log In
                 </button>
               </IfNotAuthenticated>
 
               <IfAuthenticated>
-                <div>
+                {/* <div>
+                  <button
+                    onClick={handleMenu}
+                    className="rounded-full w-10 overflow-hidden"
+                  >
+                    <img className="w-full" src={user?.picture} />
+                  </button>
                   <button
                     onClick={handleSignOut}
                     className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
                   >
                     Log Out
-                  </button>
-
-                  <img className=" rounded-full  w-14" src={user?.picture} />
-
+                  </button> 
                   {user && <p>Signed in as: {user?.name}</p>}
-                </div>
+                </div> */}
+                <Menu as="div" className="relative ml-3">
+                  <div>
+                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <span className="sr-only">Open user menu</span>
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src={user?.picture}
+                        alt=""
+                      />
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <span className="bg-sky-100 block px-4 py-2 text-sm text-sky-600">
+                            Hello{' '}
+                            {user?.given_name ||
+                              user?.middle_name ||
+                              user?.name}
+                            !
+                          </span>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/profile"
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}
+                          >
+                            Your Profile
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="#"
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}
+                          >
+                            Settings
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            className={` w-full ${classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}`}
+                            onClick={handleSignOut}
+                            to="/"
+                          >
+                            Sign out
+                          </Link>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               </IfAuthenticated>
             </div>
-
           </div>
         </div>
       </nav>
