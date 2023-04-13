@@ -13,15 +13,6 @@ router.get('/:email', async (req, res) => {
   }
 })
 
-router.get('/', async (req, res) => {
-  try {
-    const data = await db.getData('users')
-    res.json(data)
-  } catch (error) {
-    res.status(500).send(console.error(error))
-  }
-})
-
 router.post('/', async (req, res) => {
   const newData = req.body
   try {
