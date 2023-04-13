@@ -14,7 +14,7 @@ exports.seed = async function (knex) {
     {
       id: 2,
       user_id: 2,
-      name: 'Welbeing',
+      name: 'Wellbeing',
       description: 'Look after yourself',
     },
   ])
