@@ -13,6 +13,16 @@ router.get('/:email', async (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  try {
+    const userId = Number(req.params.id)
+    const data = await db.getData('users', userId)
+    res.json(data)
+  } catch (error) {
+    res.status(500).send(console.error(error))
+  }
+})
+
 router.post('/', async (req, res) => {
   const newData = req.body
   try {
