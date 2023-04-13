@@ -6,7 +6,7 @@ export interface User {
 }
 
 export interface UserData {
-  name: string
-  username: string
-  email: string
+  name: string | undefined
+  username: string | undefined
+  email: string | undefined
 }

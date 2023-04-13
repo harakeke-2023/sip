@@ -19,12 +19,19 @@ function Navbar() {
     if (user?.email) {
       findUser(user?.email).then((res) => {
         console.log(res)
+        if (res.length) {
+          setUserDetail(res[0])
+        } else {
+          addUser({name: user?.name, username: user?.nickname, email: user?.email}).then(res =>{
+            console.log("This is The Result ",res)
+            setUserDetail(res[0])  
+          })
+        }
       })
-      setUserDetail(user)
     }
 
     console.log(userDetail)
-  }, [user, userDetail])
+  }, [user])
 
   const handleSignOut = () => {
     console.log('sign out')
