@@ -4,9 +4,9 @@ import * as db from '../db/db'
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
+router.get('/:email', async (req, res) => {
   try {
-    const data = await db.getData('users')
+    const data = await db.checkUser(req.params.email)
     res.json(data)
   } catch (error) {
     res.status(500).send(console.error(error))
