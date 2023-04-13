@@ -9,7 +9,6 @@ export function findUser(email: string): Promise<string[]> {
 
 export async function addUser(user: UserData): Promise<any> {
   const result = await request.post(rootUrl).send(user)
-  console.log(result)
-  const userDetail = await request.get(`${rootUrl}/id/${result}`)
-  return userDetail
+  const userDetail = await request.get(`${rootUrl}/${result.body[0]}`)
+  return userDetail.body
 }

@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from '../config/Authenticated'
 import { addUser, findUser } from '../apis/users'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
 
 function classNames(...classes: any[]) {
@@ -14,32 +14,31 @@ function Navbar() {
 
   const { userDetail, setUserDetail } = useStateContext()
 
+  const navigator = useNavigate()
   useEffect(() => {
-    console.log(user)
     if (user?.email) {
       findUser(user?.email).then((res) => {
-        console.log(res)
         if (res.length) {
           setUserDetail(res[0])
         } else {
-          addUser({name: user?.name, username: user?.nickname, email: user?.email}).then(res =>{
-            console.log("This is The Result ",res)
-            setUserDetail(res[0])  
+          addUser({
+            name: user?.name,
+            username: user?.nickname,
+            email: user?.email,
+          }).then((res) => {
+            setUserDetail(res[0])
           })
         }
+        navigator('/list')
       })
     }
-
-    console.log(userDetail)
   }, [user])
 
   const handleSignOut = () => {
-    console.log('sign out')
     logout()
   }
 
   const handleSignIn = () => {
-    console.log('sign in')
     loginWithRedirect()
   }
 
