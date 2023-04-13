@@ -1,6 +1,10 @@
 import connection from './connection'
 import { CombinedData } from '../../models/CombinedData'
 
+export function checkUser(email: string, db = connection) {
+  return db('users').where('email', email).select()
+}
+
 export function getData(
   dbName: 'users' | 'categories' | 'cards',
   db = connection
