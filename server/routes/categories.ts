@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
-    const data = await db.getData('users')
+    const data = await db.getData('categories')
     res.json(data)
   } catch (error) {
     res.status(500).send(console.error(error))
@@ -26,7 +26,18 @@ router.delete('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const newData = req.body
   try {
-    const data = await db.addData('users', newData)
+    const data = await db.addData('categories', newData)
+    res.json(data)
+  } catch (error) {
+    res.status(500).send(console.error(error))
+  }
+})
+
+router.patch('/', async (req, res) => {
+  const newData = req.body
+  const id = req.body.id
+  try {
+    const data = await db.updateData('categories', id, newData)
     res.json(data)
   } catch (error) {
     res.status(500).send(console.error(error))
