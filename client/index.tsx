@@ -7,10 +7,10 @@ import App from './components/App'
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-      domain="https://harakeke-2023-jiho.au.auth0.com"
-      clientId="Iem1PUoimSdF8RV1MWezvZu2JsDTtcI4"
+      domain="https://sip.au.auth0.com"
+      clientId="81hjW6odpA6T8deM3U48MW1jtj4Dya9u"
+      audience="https://sip-auth/api"
       redirectUri={window.location.origin}
-      audience="https://fruits/api"
     >
       <Router>
         <App />
