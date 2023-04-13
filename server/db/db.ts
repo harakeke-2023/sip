@@ -24,3 +24,21 @@ export function deleteData(
     return db(dbName).where('id', id).delete()
   }
 }
+
+export function addData(
+  dbName: 'users' | 'categories' | 'cards',
+  data: CombinedData,
+  db = connection
+): Promise<number[]> {
+  return db(dbName).insert(data)
+}
+
+// check what front end is sending us and update/remove the id parameter accordingly
+export function updateData(
+  dbName: 'users' | 'categories' | 'cards',
+  id: number,
+  data: CombinedData,
+  db = connection
+): Promise<number> {
+  return db(dbName).where('id', id).update(data)
+}
