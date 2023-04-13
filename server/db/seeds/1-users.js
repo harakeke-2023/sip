@@ -11,11 +11,11 @@ exports.seed = async function (knex) {
       username: 'maycon_assis',
       email: 'may.con.fa@hotmail.com',
     },
-    // {
-    //   id: 2,
-    //   name: 'Zephyr',
-    //   username: 'zephyrz',
-    //   email: 'zzz@hotmail.com',
-    // }
+    {
+      id: 2,
+      name: 'Zephyr',
+      username: 'zephyrz',
+      email: 'zzz@hotmail.com',
+    },
   ])
 }

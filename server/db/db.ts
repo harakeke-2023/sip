@@ -1,6 +1,26 @@
 import connection from './connection'
-import type { Fruit } from '../../models/Fruit'
+import { CombinedData } from '../../models/CombinedData'
 
-export function getFruits(db = connection): Promise<Fruit[]> {
-  return db('fruit').select()
+export function getData(
+  dbName: 'users' | 'categories' | 'cards',
+  db = connection
+): Promise<CombinedData[]> {
+  return db(dbName).select()
+}
+
+export function deleteData(
+  dbName: 'categories' | 'cards',
+  id: number,
+  db = connection
+): Promise<any[]> {
+  if (dbName === 'categories') {
+    // Delete cards first, then delete the category
+    return Promise.all([
+      db('cards').select().where('category_id', id).delete(),
+      db(dbName).where('id', id).delete(),
+    ])
+  } else {
+    // Delete the item directly
+    return db(dbName).where('id', id).delete()
+  }
 }

@@ -4,7 +4,6 @@
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex('categories').del()
   await knex('categories').insert([
     {
       id: 1,
@@ -12,11 +11,11 @@ exports.seed = async function (knex) {
       name: 'Finances',
       description: 'Save money',
     },
-    // {
-    //   id: 2,
-    //   user_id: 2,
-    //   name: 'Welbeing',
-    //   description: 'Look after yourself',
-    // },
+    {
+      id: 2,
+      user_id: 2,
+      name: 'Welbeing',
+      description: 'Look after yourself',
+    },
   ])
 }
