@@ -24,3 +24,11 @@ export function deleteData(
     return db(dbName).where('id', id).delete()
   }
 }
+
+export function addData(
+  dbName: 'users' | 'categories' | 'cards',
+  data: CombinedData,
+  db = connection
+): Promise<number[]> {
+  return db(dbName).insert(data)
+}
