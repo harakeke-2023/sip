@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
+import { IfAuthenticated, IfNotAuthenticated } from '../config/Authenticated'
 
 function Navbar() {
+  const { logout, loginWithRedirect, user } = useAuth0()
+  useEffect(() => {
+    console.log(user)
+  }, [user])
+  useEffect(() => {
+    console.log(user)
+  }, [])
+  const handleSignOut = () => {
+    console.log('sign out')
+    logout()
+  }
+
+  const handleSignIn = () => {
+    console.log('sign in')
+    loginWithRedirect()
+  }
   return (
     <>
       <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
@@ -39,9 +57,21 @@ function Navbar() {
           </button>
           <div className="relative inline-block text-left">
             <div>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                Log In
-              </button>
+              <IfNotAuthenticated>
+                <button
+                  onClick={handleSignIn}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                >
+                  Log In
+                </button>
+              </IfNotAuthenticated>
+
+              <IfAuthenticated>
+                <div>
+                  <button onClick={handleSignOut}>Logout</button>
+                  {user && <p>Signed in as: {user?.name}</p>}
+                </div>
+              </IfAuthenticated>
             </div>
           </div>
         </div>

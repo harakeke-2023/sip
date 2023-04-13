@@ -2,12 +2,10 @@ import express from 'express'
 // import { Fruit, FruitSnakeCase } from '../../models/fruit'
 import { JwtRequest } from '../auth0'
 import checkJwt from '../auth0'
-import { requiresAuth } from 'express-openid-connect'
+
 
 
 const router = express.Router()
-
-
 
 
 
