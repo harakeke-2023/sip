@@ -6,7 +6,17 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
-    const data = await db.getData('cards')
+    const data = await db.getData('categories')
+    res.json(data)
+  } catch (error) {
+    res.status(500).send(console.error(error))
+  }
+})
+
+router.delete('/', async (req, res) => {
+  const id = req.body.id
+  try {
+    const data = await db.deleteData('categories', id)
     res.json(data)
   } catch (error) {
     res.status(500).send(console.error(error))
