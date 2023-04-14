@@ -3,7 +3,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 const useIsAuthenticated = () => {
   // TODO: call the useAuth0 hook, destructure and return isAuthenticated
-  console.log(useAuth0().isAuthenticated)
   return useAuth0().isAuthenticated
 }
 interface Props {

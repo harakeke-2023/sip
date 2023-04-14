@@ -6,6 +6,7 @@ exports.seed = function (knex) {
       {
         id: 1,
         category_id: 1,
+        user_id: 1,
         name: 'save one hundred dollars every week',
         description: 'make sure to keep it in savings account',
         period: 604800000,
@@ -17,6 +18,7 @@ exports.seed = function (knex) {
       {
         id: 2,
         category_id: 2,
+        user_id: 2,
         name: 'drink water',
         description: 'drink 2L of water every day',
         period: 86400000,
@@ -28,6 +30,7 @@ exports.seed = function (knex) {
       {
         id: 3,
         category_id: 2,
+        user_id: 2,
         name: 'eat meals',
         description: 'eat at least two meals every day',
         period: 86400000,

@@ -2,31 +2,44 @@ import React, { useEffect, useState, Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { IfAuthenticated, IfNotAuthenticated } from '../config/Authenticated'
-import { Link } from 'react-router-dom'
+import { addUser, findUser } from '../apis/users'
+import { Link, useNavigate } from 'react-router-dom'
+import { useStateContext } from '../context/StateContext'
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 function Navbar() {
   const { logout, loginWithRedirect, user } = useAuth0()
-  const [showMenu, setShowMenu] = useState(false)
 
+  const { userDetail, setUserDetail } = useStateContext()
+
+  const navigator = useNavigate()
   useEffect(() => {
-    console.log(user)
+    if (user?.email) {
+      findUser(user?.email).then((res) => {
+        if (res.length) {
+          setUserDetail(res[0])
+        } else {
+          addUser({
+            name: user?.name,
+            username: user?.nickname,
+            email: user?.email,
+          }).then((res) => {
+            setUserDetail(res[0])
+          })
+        }
+        navigator('/list')
+      })
+    }
   }, [user])
 
   const handleSignOut = () => {
-    console.log('sign out')
     logout()
   }
 
   const handleSignIn = () => {
-    console.log('sign in')
     loginWithRedirect()
-  }
-
-  const handleMenu = () => {
-    setShowMenu((prev) => !prev)
   }
 
   return (

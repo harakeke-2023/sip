@@ -1,11 +1,19 @@
 import connection from './connection'
 import { CombinedData } from '../../models/CombinedData'
 
+export function checkUser(email: string, db = connection) {
+  return db('users').where('email', email).select()
+}
+
 export function getData(
   dbName: 'users' | 'categories' | 'cards',
+  userId: number,
   db = connection
 ): Promise<CombinedData[]> {
-  return db(dbName).select()
+  if (dbName === 'users') {
+    return db('users').where('id', userId).select()
+  }
+  return db(dbName).where('user_id', userId).select()
 }
 
 export function deleteData(
