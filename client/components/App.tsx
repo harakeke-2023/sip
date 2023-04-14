@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './Navbar'
 // import Footer from './Footer'
 import Popup from './Categorypopup'
+import Footer from './Footer'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/category" element={<Popup />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer/>
       </div>
     </>
   )
