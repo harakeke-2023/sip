@@ -9,7 +9,12 @@ const List = () => {
   const { userDetail } = useStateContext()
   const [categories, setCategories]: any[] = useState([])
   const [showPopup, setShowPopup] = useState(false)
-  const [existingData, setExistingData] = useState({})
+  const [existingData, setExistingData] = useState({
+    id: 0,
+    user_id: 0,
+    name: '',
+    description: '',
+  })
 
   useEffect(() => {
     if (userDetail.id) {
@@ -22,14 +27,14 @@ const List = () => {
   }, [userDetail])
 
   const handleCreateCategory = () => {
-    setShowPopup(prev => !prev)
+    setShowPopup((prev) => !prev)
   }
 
   return (
     <div>
       {showPopup && (
-        <div>
-          <Categorypopup exsitingCategory={existingData} />
+        <div onClick={()=> setShowPopup(prev => !prev)} className=' flex justify-center items-center absolute z-10 h-screen w-screen text-center ' style={{backgroundColor: "rgba(0,0,0,0.6)"}}>
+          <Categorypopup existingCategory={existingData} />
         </div>
       )}
       <table className="table-auto flex flex-raw">
@@ -37,7 +42,10 @@ const List = () => {
           <tr className="flex flex-col">
             {categories.length &&
               categories.map((category: Category, i: number) => (
-                <th key={i}>
+                <th onClick={() => {
+                  setShowPopup(prev => !prev)
+                  setExistingData({...category})
+                }} key={i}>
                   <a
                     href="#"
                     className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
@@ -56,7 +64,10 @@ const List = () => {
                 href="#"
                 className="block max-w-sm p-6 bg-white  rounded-lg   dark:bg-gray-800 dark:border-gray-700 "
               >
-                <h5 onClick={handleCreateCategory} className="mb-2 text-lg font-normal tracking-tight text-gray-900 dark:text-white">
+                <h5
+                  onClick={handleCreateCategory}
+                  className="mb-2 text-lg font-normal tracking-tight text-gray-900 dark:text-white"
+                >
                   Create Category +
                 </h5>
               </a>
@@ -64,15 +75,14 @@ const List = () => {
           </tr>
         </thead>
         <tbody>
-         {categories.length && (
-          categories.map((category: Category, i: number) => (
-            <tr key={i}>
-            <td>
-              <Cards categoryId={category.id} />
-            </td>
-          </tr>
-          ))
-         )}
+          {categories.length &&
+            categories.map((category: Category, i: number) => (
+              <tr key={i}>
+                <td>
+                  <Cards categoryId={category.id} />
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

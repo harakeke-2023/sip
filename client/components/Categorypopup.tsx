@@ -9,7 +9,7 @@ import { Category } from '../../models/Category'
 interface Props {
   //   isOpen: boolean
   //   onClose: () => void
-  exsitingCategory: Category
+  existingCategory: Category
 }
 
 interface PopupData {
@@ -19,7 +19,7 @@ interface PopupData {
 
 
 
-const CategoryPopup: React.FC<PopupProps> = () => {
+const CategoryPopup = (props: Props) => {
   const { userDetail } = useStateContext()
 
   const [popupData, setPopupData] = useState<PopupData>({
@@ -32,9 +32,9 @@ const CategoryPopup: React.FC<PopupProps> = () => {
 
   useEffect(() => {
     initTE({ Ripple, Input })
-    if (props.exsitingCategory) {
-      setName(props.exsitingCategory.name)
-      setMessage(props.exsitingCategory.description)
+    if (props.existingCategory.name ) {
+      setName(props.existingCategory.name)
+      setMessage(props.existingCategory.description)
       setIsNew(false)
     }
   }, [])
@@ -52,13 +52,13 @@ const CategoryPopup: React.FC<PopupProps> = () => {
     addCategory({ user_id: userDetail.id, name: name, description: message })
   }
 
-  const handleDeleteCategory = () => {
-    deleteCategory({ name, message })
-  }
+  // const handleDeleteCategory = () => {
+  //   deleteCategory({ name, message })
+  // }
 
-  const handleEditCategory = () => {
-    editCategory({ name, description })
-  }
+  // const handleEditCategory = () => {
+  //   editCategory({ name, description })
+  // }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
