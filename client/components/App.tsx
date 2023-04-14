@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 // import Footer from './Footer'
 import Popup from './Categorypopup'
 import Footer from './Footer'
+import Cards from './Cards'
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/category" element={<Popup />} />
+          <Route path="/list" element={<Cards />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </>
   )
