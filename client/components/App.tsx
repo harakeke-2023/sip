@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/category" element={<Popup />} />
-          <Route path="/list" element={<Cards />} />
+          <Route path="/list" element={<Cards categoryId={1} />} />
         </Routes>
         <Footer />
       </div>
