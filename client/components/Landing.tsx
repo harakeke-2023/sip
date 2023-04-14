@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player'
 import VimeoPlayer from '@vimeo/player'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const Landing = () => {
   const [video, setVideo] = useState(false)
@@ -10,6 +11,8 @@ const Landing = () => {
     width: 0,
     height: 0,
   })
+  const { logout, loginWithRedirect, user } = useAuth0()
+
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -97,7 +100,8 @@ const Landing = () => {
                   </h1>
                   <Link
                     type="button"
-                    to="/login"
+                    to="/"
+                    onClick={() => loginWithRedirect()}
                     className=" w-64 inline-block px-7 py-3 border-2 border-white text-white font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"

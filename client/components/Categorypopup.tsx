@@ -17,8 +17,11 @@ interface PopupData {
   content: string
 }
 
-const Popup: React.FC<Props> = (props: Props) => {
+
+
+const CategoryPopup: React.FC<PopupProps> = () => {
   const { userDetail } = useStateContext()
+
   const [popupData, setPopupData] = useState<PopupData>({
     title: '',
     content: '',
@@ -140,4 +143,4 @@ const Popup: React.FC<Props> = (props: Props) => {
   )
 }
 
-export default Popup
+export default CategoryPopup
