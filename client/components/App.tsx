@@ -12,9 +12,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/category" element={<Popup />} />
+          <Route path="/list" element={<Popup />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </>
   )
