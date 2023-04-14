@@ -28,7 +28,6 @@ const Cards = (props: Props) => {
     }
   }, [userDetail])
 
-  console.log(cards)
 
   // const categoryCards = cards.filter(
   //   (card: Card) => card.category_id === categoryId
@@ -44,11 +43,11 @@ const Cards = (props: Props) => {
   }
 
   return (
-    <div>
+    <div className="flex flex-row">
       {cards.map((card: Card) => (
         <div
           key={card.id}
-          className="block max-w-md rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
+          className="bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 block max-w-md  p-6 "
         >
           <p>{card.name}</p>
           <p>Description: {card.description}</p>

@@ -595,6 +595,10 @@ video {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .inset-0 {
   inset: 0px;
 }
@@ -1283,6 +1287,10 @@ video {
   flex-shrink: 0;
 }
 
+.shrink {
+  flex-shrink: 1;
+}
+
 .grow {
   flex-grow: 1;
 }
@@ -1293,10 +1301,6 @@ video {
 
 .basis-auto {
   flex-basis: auto;
-}
-
-.table-auto {
-  table-layout: auto;
 }
 
 .origin-\[0_0\] {
@@ -1607,6 +1611,10 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.self-center {
+  align-self: center;
 }
 
 .overflow-hidden {

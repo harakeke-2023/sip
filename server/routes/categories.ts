@@ -27,6 +27,7 @@ router.delete('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const newData = req.body
   try {
+    console.log(newData)
     const data = await db.addData('categories', newData)
     res.json(data)
   } catch (error) {
@@ -38,6 +39,7 @@ router.patch('/', async (req, res) => {
   const newData = req.body
   const id = req.body.id
   try {
+    console.log(newData, id)
     const data = await db.updateData('categories', id, newData)
     res.json(data)
   } catch (error) {

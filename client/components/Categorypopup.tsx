@@ -10,14 +10,13 @@ interface Props {
   //   isOpen: boolean
   //   onClose: () => void
   existingCategory: Category
+  id: number
 }
 
 interface PopupData {
   title: string
   content: string
 }
-
-
 
 const CategoryPopup = (props: Props) => {
   const { userDetail } = useStateContext()
@@ -32,7 +31,7 @@ const CategoryPopup = (props: Props) => {
 
   useEffect(() => {
     initTE({ Ripple, Input })
-    if (props.existingCategory.name ) {
+    if (props.existingCategory.name) {
       setName(props.existingCategory.name)
       setMessage(props.existingCategory.description)
       setIsNew(false)
@@ -56,16 +55,21 @@ const CategoryPopup = (props: Props) => {
   //   deleteCategory({ name, message })
   // }
 
-  // const handleEditCategory = () => {
-  //   editCategory({ name, description })
-  // }
+  const handleEditCategory = () => {
+    editCategory({ id: props.id, user_id: userDetail.id, name: name, description: message })
+  }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+  const handleSubmit = (e: any) => {
+
+    console.log(e.target.value)
+    if (e.target.value === 'Create') {
+      handleAddCategory()
+    } else if (e.target.value === 'Update') {
+      handleEditCategory()
+    }
     // submit form logic here
-    handleAddCategory()
+
     // handleDeleteCategory();
-    // handleEditCategory();
   }
 
   return (
@@ -80,7 +84,6 @@ const CategoryPopup = (props: Props) => {
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-
           />
           <label
             htmlFor="exampleInput7"
@@ -97,10 +100,8 @@ const CategoryPopup = (props: Props) => {
             id="exampleFormControlTextarea13"
             rows={3}
             placeholder="Message"
-
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-
           />
           <label
             htmlFor="exampleFormControlTextarea13"
@@ -127,11 +128,12 @@ const CategoryPopup = (props: Props) => {
         {/*Submit button*/}
         <button
           type="submit"
+          onClick={handleSubmit}
           className="dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
           data-te-ripple-init=""
           data-te-ripple-color="light"
+          value={isNew ? "Create" : "Update"}
         >
-
           {isNew ? 'Create' : 'Update'}
         </button>
         <button
@@ -141,7 +143,6 @@ const CategoryPopup = (props: Props) => {
           data-te-ripple-color="light"
         >
           Delete
-
         </button>
       </form>
     </div>

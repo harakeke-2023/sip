@@ -33,58 +33,67 @@ const List = () => {
   return (
     <div>
       {showPopup && (
-        <div onClick={()=> setShowPopup(prev => !prev)} className=' flex justify-center items-center absolute z-10 h-screen w-screen text-center ' style={{backgroundColor: "rgba(0,0,0,0.6)"}}>
-          <Categorypopup existingCategory={existingData} />
+        <div
+          onClick={(e: any) => {
+            if (e.target.tagName === 'DIV') {
+              setShowPopup((prev) => !prev)
+            }
+          }}
+          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
+          style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
+        >
+          <Categorypopup id={existingData.id} existingCategory={existingData} />
         </div>
       )}
-      <table className="table-auto flex flex-raw">
-        <thead>
-          <tr className="flex flex-col">
-            {categories.length &&
-              categories.map((category: Category, i: number) => (
-                <th onClick={() => {
-                  setShowPopup(prev => !prev)
-                  setExistingData({...category})
-                }} key={i}>
-                  <a
-                    href="#"
-                    className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-                  >
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      {category.name}
-                    </h5>
-                    <p className="font-normal text-gray-700 dark:text-gray-400">
-                      {category.description}
-                    </p>
-                  </a>
-                </th>
-              ))}
-            <th>
-              <a
-                href="#"
-                className="block max-w-sm p-6 bg-white  rounded-lg   dark:bg-gray-800 dark:border-gray-700 "
+      <ul>
+        {categories.length &&
+          categories.map((category: Category, i: number) => (
+            <li key={i} className="flex">
+              <div
+                onClick={() => {
+                  setShowPopup((prev) => !prev)
+                  setExistingData({ ...category })
+                }}
+                className=" max-w-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5
-                  onClick={handleCreateCategory}
-                  className="mb-2 text-lg font-normal tracking-tight text-gray-900 dark:text-white"
-                >
-                  Create Category +
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {category.name}
                 </h5>
-              </a>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {categories.length &&
-            categories.map((category: Category, i: number) => (
-              <tr key={i}>
-                <td>
-                  <Cards categoryId={category.id} />
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  {category.description}
+                </p>
+              </div>
+              <div className=" flex p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <Cards key={i} categoryId={category.id} />
+                <div 
+                onClick={() => handleCreateCategory()}
+                className=' p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 self-center'>
+                   +
+                </div>
+              </div>
+            </li>
+          ))}
+        <li>
+          <a
+            href="#"
+            className="block max-w-sm p-6 bg-white  rounded-lg   dark:bg-gray-800 dark:border-gray-700 "
+          >
+            <h5
+              onClick={() => {
+                setExistingData({
+                  id: 0,
+                  user_id: 0,
+                  name: '',
+                  description: '',
+                })
+                handleCreateCategory()}}
+              className="mb-2 text-lg font-normal tracking-tight text-gray-900 dark:text-white"
+            >
+              Create Category +
+            </h5>
+          </a>
+        </li>
+      </ul>
     </div>
   )
 }
