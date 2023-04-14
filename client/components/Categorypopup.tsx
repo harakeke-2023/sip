@@ -80,6 +80,7 @@ const CategoryPopup: React.FC<PopupProps> = () => {
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+
           />
           <label
             htmlFor="exampleInput7"
@@ -96,8 +97,10 @@ const CategoryPopup: React.FC<PopupProps> = () => {
             id="exampleFormControlTextarea13"
             rows={3}
             placeholder="Message"
+
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+
           />
           <label
             htmlFor="exampleFormControlTextarea13"
@@ -128,6 +131,7 @@ const CategoryPopup: React.FC<PopupProps> = () => {
           data-te-ripple-init=""
           data-te-ripple-color="light"
         >
+
           {isNew ? 'Create' : 'Update'}
         </button>
         <button
@@ -137,6 +141,7 @@ const CategoryPopup: React.FC<PopupProps> = () => {
           data-te-ripple-color="light"
         >
           Delete
+
         </button>
       </form>
     </div>

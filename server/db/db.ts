@@ -7,13 +7,16 @@ export function checkUser(email: string, db = connection) {
 
 export function getData(
   dbName: 'users' | 'categories' | 'cards',
-  userId: number,
+  id: number,
   db = connection
 ): Promise<CombinedData[]> {
   if (dbName === 'users') {
-    return db('users').where('id', userId).select()
+    return db('users').where('id', id).select()
+  } else if (dbName === 'cards') {
+    return db('cards').where('category_id', id).select()
   }
-  return db(dbName).where('user_id', userId).select()
+
+  return db(dbName).where('user_id', id).select()
 }
 
 export function deleteData(

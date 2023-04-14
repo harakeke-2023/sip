@@ -4,6 +4,7 @@ export interface Card {
   user_id: number
   name: string
   description: string
+  date_created: number
   period: number
   location: string
   completed: boolean
