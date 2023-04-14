@@ -2,8 +2,9 @@ import Landing from './Landing'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './Navbar'
 // import Footer from './Footer'
-import Popup from './Categorypopup'
+import CategoryPopup from './Categorypopup'
 import Footer from './Footer'
+import List from './List'
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/category" element={<Popup />} />
+          <Route path="/list" element={<List />} />
+          <Route path="/category" element={<CategoryPopup />} />
         </Routes>
         <Footer/>
       </div>
