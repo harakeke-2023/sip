@@ -52,7 +52,7 @@ const Cards = (props: Props) => {
         >
           <p>{card.name}</p>
           <p>Description: {card.description}</p>
-          <p>End date: {getDate(card.period)}</p>
+          <p>End date: {getDate(card.date_created, card.period)}</p>
           <p>Location: {card.location}</p>
         </div>
       ))}
