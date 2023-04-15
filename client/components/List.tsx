@@ -4,6 +4,7 @@ import { findCategories } from '../apis/list'
 import { useStateContext } from '../context/StateContext'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
+import Cardpopup from './Cardpopup'
 
 const List = () => {
   const { userDetail } = useStateContext()
@@ -14,6 +15,20 @@ const List = () => {
     user_id: 0,
     name: '',
     description: '',
+  })
+  const [showCardPopup, setShowCardPopup] = useState(false)
+  const [existingCard, setExistingCard] = useState({
+    id: 0,
+    category_id: 0,
+    user_id: 0,
+    name: '',
+    description: '',
+    date_created: 0,
+    period: 0,
+    location: '',
+    completed: false,
+    total_count: 0,
+    comp_count: 0,
   })
 
   useEffect(() => {
@@ -47,6 +62,19 @@ const List = () => {
           <Categorypopup id={existingData.id} existingCategory={existingData} />
         </div>
       )}
+      {showCardPopup && (
+        <div
+          onClick={(e: any) => {
+            if (e.target.tagName === 'DIV') {
+              setShowCardPopup((prev) => !prev)
+            }
+          }}
+          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
+          style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
+        >
+          <Cardpopup existingCard={existingCard} id={existingCard.id} />
+        </div>
+      )}
       <ul>
         {categories.length &&
           categories.map((category: Category, i: number) => (
@@ -68,7 +96,11 @@ const List = () => {
               <div className=" flex p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <Cards key={i} categoryId={category.id} />
                 <div
-                  onClick={() => handleCreateCategory()}
+
+                  onClick={() => {
+                    setShowCardPopup((prev) => !prev)
+                  }}
+
                   className=" p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 self-center"
                 >
                   +
