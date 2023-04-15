@@ -36,22 +36,9 @@ const CategoryPopup = (props: Props) => {
     }
   }, [])
 
-  // useEffect(() => {
-  //   // if (isOpen) {
-  //   //   fetch('/api/popup-data')
-  //   //     .then((response) => response.json())
-  //   //     .then((data) => setPopupData(data))
-  //   //     .catch((error) => console.error(error))
-  //   // }
-  // }, [isOpen])
-
   const handleAddCategory = () => {
     addCategory({ user_id: userDetail.id, name: name, description: message })
   }
-
-  // const handleDeleteCategory = () => {
-  //   deleteCategory({ name, message })
-  // }
 
   const handleEditCategory = () => {
     editCategory({
@@ -63,15 +50,14 @@ const CategoryPopup = (props: Props) => {
   }
 
   const handleSubmit = (e: any) => {
+
     console.log(e.target.value)
+
     if (e.target.value === 'Create') {
       handleAddCategory()
     } else if (e.target.value === 'Update') {
       handleEditCategory()
     }
-    // submit form logic here
-
-    // handleDeleteCategory();
   }
 
   return (
