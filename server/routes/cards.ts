@@ -36,7 +36,8 @@ router.post('/', async (req, res) => {
 
 router.patch('/', async (req, res) => {
   const newData = req.body
-  const id = req.body.id
+  const id = Number(req.body.id)
+  console.log(req.body)
   try {
     const data = await db.updateData('cards', id, newData)
     res.json(data)

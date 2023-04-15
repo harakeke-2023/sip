@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCards } from '../apis/cards'
+import { getCards, updateCard } from '../apis/cards'
 import { useStateContext } from '../context/StateContext'
 import { Ripple, Input, initTE } from 'tw-elements'
 
@@ -12,19 +12,19 @@ interface Props {
 
 const Cards = (props: Props) => {
   const { userDetail } = useStateContext()
-  const [cards, setCards] = useState([])
+  const [cards, setCards] = useState([] as Card[])
 
   async function fetchCards(userId: number) {
     try {
       const res = await getCards(userId)
-      setCards(() => res)
+      console.log(res)
+      setCards(() => [...res])
     } catch (err) {
       console.log(err)
     }
   }
 
   useEffect(() => {
-    Date
     if (userDetail.id) {
       fetchCards(props.categoryId)
     }
@@ -33,6 +33,12 @@ const Cards = (props: Props) => {
   // const categoryCards = cards.filter(
   //   (card: Card) => card.category_id === categoryId
   // )
+
+  async function handleComplete(e: any, card: Card) {
+    console.log(e.target.checked)
+    await updateCard({ ...card, completed: e.target.checked })
+    await fetchCards(props.categoryId)
+  }
 
   return (
     <div className="flex flex-row">
@@ -44,8 +50,19 @@ const Cards = (props: Props) => {
           <p>{card.name}</p>
           <p>Description: {card.description}</p>
 
-          <GetTimeLeft dateCreated={card.date_created} period={card.period} />
-
+          <GetTimeLeft
+            card={card}
+            dateCreated={card.date_created}
+            period={card.period}
+          />
+          <input
+            onChange={(e) => handleComplete(e, card)}
+            checked={card.completed}
+            type="checkbox"
+            id={String(card.id)}
+            name="complete"
+          />
+          <label htmlFor={String(card.id)}>Completed</label>
           <p>Location: {card.location}</p>
         </div>
       ))}
