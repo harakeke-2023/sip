@@ -53,3 +53,10 @@ export function updateData(
 ): Promise<number> {
   return db(dbName).where('id', id).update(data)
 }
+
+export function getCardData(
+  id: number,
+  db = connection
+): Promise<CombinedData[]> {
+  return db('cards').where('id', id).select()
+}

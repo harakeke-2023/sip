@@ -4,6 +4,16 @@ import * as db from '../db/db'
 
 const router = express.Router()
 
+router.get('/card/:id', async (req, res) => {
+  try {
+    const userId = Number(req.params.id)
+    const data = await db.getCardData(userId)
+    res.json(data)
+  } catch (error) {
+    res.status(500).send(console.error(error))
+  }
+})
+
 router.get('/:id', async (req, res) => {
   try {
     const userId = Number(req.params.id)
@@ -36,7 +46,8 @@ router.post('/', async (req, res) => {
 
 router.patch('/', async (req, res) => {
   const newData = req.body
-  const id = req.body.id
+  const id = Number(req.body.id)
+  console.log(req.body)
   try {
     const data = await db.updateData('cards', id, newData)
     res.json(data)

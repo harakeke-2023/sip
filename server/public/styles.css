@@ -595,10 +595,6 @@ video {
   position: relative;
 }
 
-.sticky {
-  position: sticky;
-}
-
 .inset-0 {
   inset: 0px;
 }
@@ -1285,10 +1281,6 @@ video {
 
 .shrink-0 {
   flex-shrink: 0;
-}
-
-.shrink {
-  flex-shrink: 1;
 }
 
 .grow {

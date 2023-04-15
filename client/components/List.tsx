@@ -18,11 +18,13 @@ const List = () => {
 
   useEffect(() => {
     if (userDetail.id) {
-      findCategories(userDetail.id).then((res) => {
-        console.log(res)
-        setCategories([...res])
-        return res
-      })
+      findCategories(userDetail.id)
+        .then((res) => {
+          console.log(res)
+          setCategories([...res])
+          return res
+        })
+        .catch((err) => console.log(err))
     }
   }, [userDetail])
 
@@ -65,10 +67,11 @@ const List = () => {
               </div>
               <div className=" flex p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <Cards key={i} categoryId={category.id} />
-                <div 
-                onClick={() => handleCreateCategory()}
-                className=' p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 self-center'>
-                   +
+                <div
+                  onClick={() => handleCreateCategory()}
+                  className=" p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 self-center"
+                >
+                  +
                 </div>
               </div>
             </li>
@@ -86,7 +89,8 @@ const List = () => {
                   name: '',
                   description: '',
                 })
-                handleCreateCategory()}}
+                handleCreateCategory()
+              }}
               className="mb-2 text-lg font-normal tracking-tight text-gray-900 dark:text-white"
             >
               Create Category +
