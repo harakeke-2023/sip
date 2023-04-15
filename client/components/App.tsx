@@ -9,7 +9,6 @@ import Cards from './Cards'
 
 import List from './List'
 
-
 function App() {
   return (
     <>
@@ -19,8 +18,20 @@ function App() {
           <Route path="/" element={<Landing />} />
 
           <Route path="/list" element={<List />} />
-     
-
+          {/* <Route
+            path="/category"
+            element={
+              <CategoryPopup
+                id={1}
+                existingCategory={{
+                  user_id: 1,
+                  name: 'hello',
+                  description: 'world',
+                  id: 1,
+                }}
+              />
+            }
+          /> */}
         </Routes>
         <Footer />
       </div>
