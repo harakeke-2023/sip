@@ -14,3 +14,8 @@ export async function updateCard(card: Card) {
 
   return res.body
 }
+
+export async function getCard(id: number) {
+  const res = await request.get(`${rootUrl}/card/${id}`)
+  return res.body
+}

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Card } from '../../models/Card'
-import { updateCard } from '../apis/cards'
+import { getCard, updateCard } from '../apis/cards'
 
 function GetTimeLeft({
   dateCreated,
   period,
   card,
+  handleCardUpdate,
 }: {
   dateCreated: number
   period: number
   card: Card
+  handleCardUpdate: (updatedCard: Card) => void
 }) {
   function calculateNextDate(
     currentDate: number,
@@ -29,38 +31,29 @@ function GetTimeLeft({
   const [timeLeft, setTimeLeft] = useState('')
   useEffect(() => {
     // let goalDateEpoch = dateCreated + period
+
     setInterval(() => {
       const currentDate = Math.floor(Date.now())
       const goalDateEpoch = calculateNextDate(currentDate, dateCreated, period)
       const timeLeft = goalDateEpoch - currentDate
-      if (card.id === 13) {
-        console.log(card.id, card.completed)
-      }
 
       if (timeLeft <= 1000) {
-        updateCard({
-          ...card,
-          total_count: Math.floor(
-            (Math.floor(Date.now()) - dateCreated) / period
-          ),
-        })
-        console.log('Hit 0!!!!')
-        if (card.completed) {
-          // console.log('and completed')
-          console.log(card)
-          updateCard({
-            ...card,
-            completed: false,
-            comp_count: card.comp_count + 1,
+        getCard(card.id)
+          .then((res) => {
+            const card = res[0]
+            handleCardUpdate({
+              ...card,
+              total_count: Math.floor(
+                (Math.floor(Date.now()) - dateCreated) / period
+              ),
+              comp_count: card.completed
+                ? card.comp_count + 1
+                : card.comp_count,
+              completed: card.completed ? false : card.completed,
+            })
           })
-        }
+          .catch((err) => console.log(err))
       }
-
-      // console.log('date created', dateCreated)
-      // console.log('period', period)
-      // console.log('current date', currentDate)
-
-      // console.log('time left', timeLeft)
 
       // calculate the hours, minutes, and seconds in the elapsed time
       const days = Math.floor(timeLeft / (24 * 60 * 60 * 1000))

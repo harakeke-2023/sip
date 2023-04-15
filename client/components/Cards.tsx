@@ -25,19 +25,19 @@ const Cards = (props: Props) => {
   }
 
   useEffect(() => {
-    if (userDetail.id) {
+    if (props.categoryId) {
       fetchCards(props.categoryId)
     }
-  }, [userDetail])
-
-  // const categoryCards = cards.filter(
-  //   (card: Card) => card.category_id === categoryId
-  // )
+  }, [props.categoryId])
 
   async function handleComplete(e: any, card: Card) {
-    console.log(e.target.checked)
-    await updateCard({ ...card, completed: e.target.checked })
+    await handleCardUpdate({ ...card, completed: e.target.checked })
     await fetchCards(props.categoryId)
+  }
+
+  async function handleCardUpdate(updatedCard: Card) {
+    await updateCard(updatedCard)
+    fetchCards(props.categoryId)
   }
 
   return (
@@ -54,6 +54,7 @@ const Cards = (props: Props) => {
             card={card}
             dateCreated={card.date_created}
             period={card.period}
+            handleCardUpdate={handleCardUpdate}
           />
           <input
             onChange={(e) => handleComplete(e, card)}
