@@ -4,6 +4,7 @@ import { useStateContext } from '../context/StateContext'
 import { Ripple, Input, initTE } from 'tw-elements'
 
 import { Card } from '../../models/Card'
+import GetTimeLeft from './GetDate'
 
 interface Props {
   categoryId: number
@@ -23,24 +24,15 @@ const Cards = (props: Props) => {
   }
 
   useEffect(() => {
+    Date
     if (userDetail.id) {
       fetchCards(props.categoryId)
     }
   }, [userDetail])
 
-
   // const categoryCards = cards.filter(
   //   (card: Card) => card.category_id === categoryId
   // )
-
-  function getDate(dateCreated: number, period: number) {
-    // const currentDate = new Date().getTime()
-    const goalDateEpoch = dateCreated + period
-    const goalDate = new Date(goalDateEpoch).toLocaleString('en-GB', {
-      timeZone: 'Pacific/Auckland',
-    })
-    return goalDate
-  }
 
   return (
     <div className="flex flex-row">
@@ -51,7 +43,9 @@ const Cards = (props: Props) => {
         >
           <p>{card.name}</p>
           <p>Description: {card.description}</p>
-          <p>End date: {getDate(card.date_created, card.period)}</p>
+
+          <GetTimeLeft dateCreated={card.date_created} period={card.period} />
+
           <p>Location: {card.location}</p>
         </div>
       ))}
