@@ -26,7 +26,6 @@ const CardCopy = (props: Props) => {
     minutes: 0,
   })
   const [isNew, setIsNew] = useState(false)
-  const [id, setId] = useState(0)
 
   const isCard = (card: Card | CardData): card is Card => {
     return 'id' in card
