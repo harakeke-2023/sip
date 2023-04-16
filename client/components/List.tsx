@@ -4,8 +4,10 @@ import { findCategories } from '../apis/list'
 import { useStateContext } from '../context/StateContext'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
+
 import Cardpopup from './Cardpopup'
 import { FaPlus } from 'react-icons/fa'
+
 
 const List = () => {
   const { userDetail } = useStateContext()
@@ -16,20 +18,6 @@ const List = () => {
     user_id: 0,
     name: '',
     description: '',
-  })
-  const [showCardPopup, setShowCardPopup] = useState(false)
-  const [existingCard, setExistingCard] = useState({
-    id: 0,
-    category_id: 0,
-    user_id: 0,
-    name: '',
-    description: '',
-    date_created: 0,
-    period: 0,
-    location: '',
-    completed: false,
-    total_count: 0,
-    comp_count: 0,
   })
 
   useEffect(() => {
@@ -63,6 +51,7 @@ const List = () => {
           <Categorypopup id={existingData.id} existingCategory={existingData} />
         </div>
       )}
+
       {showCardPopup && (
         <div
           onClick={(e: any) => {
@@ -77,6 +66,7 @@ const List = () => {
         </div>
       )}
       <ul className="flex flex-wrap ">
+
         {categories.length &&
           categories.map((category: Category, i: number) => (
             <li
@@ -97,6 +87,7 @@ const List = () => {
                   {category.description}
                 </p>
               </div>
+
               <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
                   <Cards key={i} categoryId={category.id} />
@@ -108,7 +99,9 @@ const List = () => {
                   >
                     <FaPlus size={16} />
                   </button>
+
                 </div>
+
               </div>
             </li>
           ))}
