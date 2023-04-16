@@ -25,3 +25,7 @@ export async function addNewCard(form: CardData) {
   return res.body
 }
 
+export async function getCardsbyUserId(id: number) {
+  const res = await request.get(`${rootUrl}/cards/${id}`)
+  return res.body
+}

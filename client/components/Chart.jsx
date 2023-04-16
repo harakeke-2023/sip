@@ -10,6 +10,12 @@ const CompletedTasksBarChart = ({ completedTasks, totalTasks }) => {
   const chartRef = useRef(null)
 
   useEffect(() => {
+
+
+    
+
+
+
     const chartData = {
       labels: ['Completed Tasks'],
       datasets: [
