@@ -106,31 +106,57 @@ const CardPopup = (props: Props) => {
   }
 
   return (
-    <div className="popup">
-      <div className="popup__content">
-        <div className="popup__left">
-          <h2 className="heading-secondary u-margin-bottom-small">
+    <div className="max-w-lg flex flex-wrap ml-2 -mx-1 mb-6 w-full px-3 uppercase tracking-wide text-gray-700 text-xs font-bold">
+      <div className=" rounded-lg overflow-hidden border border-l border-r border-gray-400 flex justify-evenly p-8">
+        <div className="">
+          <h2 className="heading-secondary u-margin-bottom-small ">
             {isNew ? 'Add Card' : 'Edit Card'}
           </h2>
+
           <form className="form">
-            <div className="form__group">
-              <input
-                type="text"
-                className="form__input"
-                placeholder="Card Name"
-                id="name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                required
-              />
-              <label htmlFor="name" className="form__label">
-                Card Name
-              </label>
+            {/* CARD NAME */}
+
+            <div className="flex items-center justify-between space-x-2">
+              <div className="form__group">
+                <label htmlFor="name" className="form__label">
+                  Card Name
+                </label>
+                <input
+                  type="text"
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  placeholder="Supermarket List"
+                  id="name"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  required
+                />
+              </div>
+              {/* LOCATION */}
+              <div className="form__group">
+                <label htmlFor="date" className="form__label">
+                  Location
+                </label>
+                <input
+                  type="text"
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  placeholder="Auckalnd"
+                  id="location"
+                  value={form.location}
+                  onChange={(e) =>
+                    setForm({ ...form, location: e.target.value })
+                  }
+                  required
+                />
+              </div>
             </div>
+            {/* CARD DESCRIPTION */}
             <div className="form__group">
+              <label htmlFor="message" className="form__label">
+                Description
+              </label>
               <textarea
-                className="form__input"
-                placeholder="Card Description"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                placeholder="Milk, cheese, bread, eggs, etc."
                 id="message"
                 value={form.description}
                 onChange={(e) =>
@@ -138,33 +164,18 @@ const CardPopup = (props: Props) => {
                 }
                 required
               />
-              <label htmlFor="message" className="form__label">
-                Card Description
-              </label>
             </div>
 
-            <div className="form__group">
-              <input
-                type="text"
-                className="form__input"
-                placeholder="Card Location"
-                id="location"
-                value={form.location}
-                onChange={(e) => setForm({ ...form, location: e.target.value })}
-                required
-              />
-              <label htmlFor="location" className="form__label">
-                Card Location
-              </label>
-            </div>
-            <div>
+            {/* PERIOD DAYS */}
+            <div className="relative">
               <label htmlFor="period" className="form__label">
-                Card Period
+                Period
               </label>
               <select
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                placeholder="Period"
+                id="grid-state"
                 name="period"
-                id="period"
-                className="form__input"
                 value={form.period}
                 onChange={(e) =>
                   setForm({ ...form, period: Number(e.target.value) })
@@ -176,15 +187,14 @@ const CardPopup = (props: Props) => {
                 <option value="4">Custom </option>
               </select>
             </div>
-
+            {/* PEDRIOD HOURS */}
             {form.period === 4 && (
-              <div>
-                <label htmlFor="custom-date" className="form__label">
-                  Hours
-                </label>
+              <div className="flex items-center justify-between space-x-2 mt-6">
                 <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   name="hours"
                   type="number"
+                  placeholder="Hours"
                   // inputProps={{ className: 'form__input' }}
                   // value={e.target.value}
                   onChange={(event) => {
@@ -197,12 +207,14 @@ const CardPopup = (props: Props) => {
                     })
                   }}
                 />
-                <label htmlFor="custom-date" className="form__label">
-                  Minutes
+                <label htmlFor="custom-date" className="align-center">
+                  :
                 </label>
                 <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   name="min"
                   type="number"
+                  placeholder="Min"
                   // inputProps={{ className: 'form__input' }}
                   // value={e.target.value}
                   onChange={(event) => {
@@ -218,14 +230,18 @@ const CardPopup = (props: Props) => {
               </div>
             )}
 
-            <div className="form__group">
+            {/* Button */}
+            <div className="space-x-2 mt-3 ">
               <button
-                className="btn btn--green"
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow "
                 onClick={isNew ? handleAddCard : handleEditCard}
               >
                 {isNew ? 'Add Card' : 'Edit Card'}
               </button>
-              <button className="btn btn--red" onClick={handleDeleteCard}>
+              <button
+                className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                onClick={handleDeleteCard}
+              >
                 Delete Card
               </button>
             </div>
