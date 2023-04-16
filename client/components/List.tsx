@@ -88,7 +88,7 @@ const List = () => {
                   setShowPopup((prev) => !prev)
                   setExistingData({ ...category })
                 }}
-                className="w-25 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
                 <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 ">
                   {category.name}
@@ -97,25 +97,23 @@ const List = () => {
                   {category.description}
                 </p>
               </div>
-              <div className=" flex p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <Cards key={i} categoryId={category.id} />
-
-                <button
-                  onClick={() => {
-                    setShowCardPopup((prev) => !prev)
-                  }}
-                  className=" bg-gray-600  hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
-                >
-                  <FaPlus size={16} />
-                </button>
+              <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
+                  <Cards key={i} categoryId={category.id} />
+                  <button
+                    onClick={() => {
+                      setShowCardPopup((prev) => !prev)
+                    }}
+                    className=" bg-gray-600  hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
+                  >
+                    <FaPlus size={16} />
+                  </button>
+                </div>
               </div>
             </li>
           ))}
-        <li>
-          <a
-            href="#"
-            className="block max-w-sm p-6 bg-white  rounded-lg   dark:bg-gray-800 dark:border-gray-700 "
-          >
+        <li className="flex w-full">
+          <div className="w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5
               onClick={() => {
                 setExistingData({
@@ -128,9 +126,9 @@ const List = () => {
               }}
               className="mb-2 text-lg font-normal tracking-tight text-gray-900 dark:text-white"
             >
-              Create Category +
+              Create Category
             </h5>
-          </a>
+          </div>
         </li>
       </ul>
     </div>
