@@ -1,3 +1,4 @@
+import { CardDetails } from './CardDetails'
 import { useEffect, useState } from 'react'
 import { getCards, updateCard } from '../apis/cards'
 import { useStateContext } from '../context/StateContext'
@@ -47,13 +48,19 @@ const Cards = (props: Props) => {
         <div
           key={card.id}
           className="border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 block max-w-md  p-6 "
-          style={{ background: card.completed ? 'gray' : 'white' }}
+          style={{ background: card.completed ? 'darkgray' : 'white' }}
         >
           <strong>
-            <p className="mb-2">{card.name}</p>
+            <p
+              className="mb-2"
+              style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
+            >
+              {card.name}
+            </p>
           </strong>
-          <p>Description: {card.description}</p>
 
+          <CardDetails card={card} />
+          <br></br>
           <input
             className="bg-black"
             style={{ display: 'none' }}
@@ -63,9 +70,8 @@ const Cards = (props: Props) => {
             id={String(card.id)}
             name="complete"
           />
-          <p className="mb-4">Location: {card.location}</p>
           <label
-            className={` inline-flex items-center px-4 py-2  rounded-lg text-white font-medium`}
+            className={` inline-flex items-center px-4 py-2  rounded-lg text-white font-medium cursor-pointer`}
             style={{ background: card.completed ? '#333333' : '#48BB78' }}
             htmlFor={String(card.id)}
           >
