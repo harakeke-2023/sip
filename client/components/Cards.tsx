@@ -65,7 +65,7 @@ const Cards = (props: Props) => {
           className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
           style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
         >
-          <CardCopy existingCard={existingCard} id={props.categoryId} />
+          <CardCopy existingCard={existingCard} />
         </div>
       )}
       {cards.map((card: Card) => (

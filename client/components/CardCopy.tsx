@@ -5,12 +5,11 @@ import { addNewCard, updateCard } from '../apis/cards'
 
 interface Props {
   existingCard: Card | CardData
-  id: number
 }
 
 const CardCopy = (props: Props) => {
   const [form, setForm] = useState({
-    category_id: props.id,
+    category_id: props.existingCard.category_id,
     user_id: 0,
     name: '',
     description: '',
@@ -28,6 +27,10 @@ const CardCopy = (props: Props) => {
   })
   const [isNew, setIsNew] = useState(false)
   const [id, setId] = useState(0)
+
+  const isCard = (card: Card | CardData): card is Card => {
+    return 'id' in card
+  }
 
   useEffect(() => {
     setForm({ ...props.existingCard })
@@ -92,9 +95,6 @@ const CardCopy = (props: Props) => {
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
-            {/* <p className="text-red-500 text-xs italic">
-              Please fill out this field.
-            </p> */}
           </div>
           <div className="w-full md:w-1/2 px-3">
             <label
@@ -239,7 +239,12 @@ const CardCopy = (props: Props) => {
             className="opacity-90 bg-red-500 hover:bg-red-600 dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
             data-te-ripple-init=""
             data-te-ripple-color="light"
-            onClick={() => handleDelete(form.id)}
+            onClick={() => {
+              if (isCard(form)) {
+                handleDelete(form.id)
+              }
+              // handleDelete(form.id)
+            }}
           >
             Delete
           </button>
