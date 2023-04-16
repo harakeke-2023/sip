@@ -52,7 +52,7 @@ const List = () => {
         </div>
       )}
 
-      {showCardPopup && (
+      {/* {showCardPopup && (
         <div
           onClick={(e: any) => {
             if (e.target.tagName === 'DIV') {
@@ -64,9 +64,9 @@ const List = () => {
         >
           <Cardpopup existingCard={existingCard} id={existingCard.id} />
         </div>
-      )}
-      <ul className="flex flex-wrap ">
+      )} */}
 
+      <ul className="flex flex-wrap ">
         {categories.length &&
           categories.map((category: Category, i: number) => (
             <li
@@ -91,14 +91,7 @@ const List = () => {
               <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
                   <Cards key={i} categoryId={category.id} />
-                  <button
-                    onClick={() => {
-                      setShowCardPopup((prev) => !prev)
-                    }}
-                    className=" bg-gray-600  hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
-                  >
-                    <FaPlus size={16} />
-                  </button>
+               
 
                 </div>
 
@@ -117,7 +110,7 @@ const List = () => {
                 })
                 handleCreateCategory()
               }}
-              className="mb-2 text-lg font-normal tracking-tight text-gray-900 dark:text-white"
+              className="mb-2 text-white text-lg font-normal tracking-tight text-gray-900 dark:text-white"
             >
               Create Category
             </h5>

@@ -75,7 +75,9 @@ const CardCopy = (props: Props) => {
 
   return (
     <div className="bg-white rounded-lg">
-      <h1 className="text-2xl font-bold mt-8  mb-6">Card Detail</h1>
+      <h1 className="text-2xl font-bold mt-8  mb-6">
+        {isNew ? 'Add Card' : 'Edit Card'}
+      </h1>
       <form className="w-full max-w-lg bg-white py-16 px-16 rounded-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -197,7 +199,11 @@ const CardCopy = (props: Props) => {
                     })
                   }}
                 />
+              <label htmlFor="custom-date" className="align-center">
+                  :
+                </label>
               </div>
+              
               <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

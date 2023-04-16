@@ -14,7 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route
+          {/* <Route
             path="/cards"
             element={
               <CardPopup
@@ -33,7 +33,7 @@ function App() {
                 }}
               />
             }
-          />
+          /> */}
 
           <Route path="/list" element={<List />} />
           {/* <Route path="/category" element={<CategoryPopup />} /> */}
