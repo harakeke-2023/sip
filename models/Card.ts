@@ -1,5 +1,4 @@
-export interface Card {
-  id: number
+export interface CardData {
   category_id: number
   user_id: number
   name: string
@@ -11,3 +10,8 @@ export interface Card {
   total_count: number
   comp_count: number
 }
+
+export interface Card extends CardData {
+  id: number
+}
+

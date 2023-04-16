@@ -2,13 +2,12 @@ import request from 'superagent'
 // import { UserData } from '../../models/User'
 import { Card } from '../../models/Card'
 
-const rootUrl = '/api/v1/categories'
+const rootUrl = '/api/v1/cards'
 
-export function deleteCard(form: Card): Promise<string[]> {
-  return request
-    .delete(rootUrl)
-    .send(form)
-    .then((res) => res.body)
+export async function deleteCard(id: number) {
+  const res = request.delete(rootUrl).send({ id })
+
+  return res
 }
 
 export function editCard(form: Card): Promise<string[]> {
