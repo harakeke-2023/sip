@@ -30,8 +30,6 @@ function GetTimeLeft({
 
   const [timeLeft, setTimeLeft] = useState('')
   useEffect(() => {
-    // let goalDateEpoch = dateCreated + period
-
     setInterval(() => {
       const currentDate = Math.floor(Date.now())
       const goalDateEpoch = calculateNextDate(currentDate, dateCreated, period)
@@ -80,13 +78,20 @@ function GetTimeLeft({
       setTimeLeft(String(formattedElapsedTime))
     }, 1000)
   }, [])
+  console.log(timeLeft)
+  console.log(parseInt(timeLeft))
 
   return (
     <>
       {card.completed ? null : (
         <div
           className="rounded p-1 mt-2 inline-flex text-white text-xs"
-          style={{ background: 'darkorange' }}
+          style={{
+            background:
+              !timeLeft.includes('hour') && !timeLeft.includes('hours')
+                ? 'red'
+                : 'darkorange',
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
