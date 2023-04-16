@@ -8,6 +8,7 @@ import Footer from './Footer'
 import Cards from './Cards'
 
 import List from './List'
+import CardPopup from './Cardpopup'
 
 function App() {
   return (
@@ -16,6 +17,26 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route
+            path="/cards"
+            element={
+              <CardPopup
+                existingCard={{
+                  id: 0,
+                  category_id: 0,
+                  user_id: 0,
+                  name: '',
+                  description: '',
+                  date_created: 0, // new Date().valueOf()
+                  period: 0,
+                  location: '',
+                  completed: false,
+                  total_count: 0,
+                  comp_count: 0,
+                }}
+              />
+            }
+          />
 
           <Route path="/list" element={<List />} />
           {/* <Route
