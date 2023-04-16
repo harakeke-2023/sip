@@ -5,6 +5,7 @@ import { useStateContext } from '../context/StateContext'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
 import Cardpopup from './Cardpopup'
+import { FaPlus } from 'react-icons/fa'
 
 const List = () => {
   const { userDetail } = useStateContext()
@@ -75,36 +76,38 @@ const List = () => {
           <Cardpopup existingCard={existingCard} id={existingCard.id} />
         </div>
       )}
-      <ul>
+      <ul className="flex flex-wrap ">
         {categories.length &&
           categories.map((category: Category, i: number) => (
-            <li key={i} className="flex">
+            <li
+              key={i}
+              className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
+            >
               <div
                 onClick={() => {
                   setShowPopup((prev) => !prev)
                   setExistingData({ ...category })
                 }}
-                className=" max-w-4 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="w-25 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 ">
                   {category.name}
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="mt-1 text-lg text-gray-700 dark:text-gray-400">
                   {category.description}
                 </p>
               </div>
               <div className=" flex p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <Cards key={i} categoryId={category.id} />
-                <div
 
+                <button
                   onClick={() => {
                     setShowCardPopup((prev) => !prev)
                   }}
-
-                  className=" p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 self-center"
+                  className=" bg-gray-600  hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
                 >
-                  +
-                </div>
+                  <FaPlus size={16} />
+                </button>
               </div>
             </li>
           ))}
