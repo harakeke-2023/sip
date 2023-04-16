@@ -113,7 +113,7 @@ const List = () => {
             </li>
           ))}
         <li className="flex w-full">
-          <div className="w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <div className="w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 border-gray-200 rounded-lg shadow hover:bg-gray-100 bg-gray-600  dark:border-gray-700 hover:bg-gray-500 transition duration-300 ease-in-out">
             <h5
               onClick={() => {
                 setExistingData({
