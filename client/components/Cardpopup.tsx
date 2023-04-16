@@ -74,19 +74,19 @@ const CardPopup = (props: Props) => {
   }
 
   const handleDeleteCard = () => {
-    deleteCard({
-      id: 123,
-      category_id: 456,
-      user_id: 789,
-      name: 'Sample Card',
-      description: 'This is a sample card.',
-      date_created: 1642160400,
-      period: 30,
-      location: 'Sample Location',
-      completed: false,
-      total_count: 10,
-      comp_count: 2,
-    })
+    // deleteCard({
+    //   id: 123,
+    //   category_id: 456,
+    //   user_id: 789,
+    //   name: 'Sample Card',
+    //   description: 'This is a sample card.',
+    //   date_created: 1642160400,
+    //   period: 30,
+    //   location: 'Sample Location',
+    //   completed: false,
+    //   total_count: 10,
+    //   comp_count: 2,
+    // })
   }
 
   const handleEditCard = () => {
