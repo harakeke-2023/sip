@@ -11,9 +11,15 @@ const CompletedTasksBarChart = ({ completedTasks, totalTasks }) => {
   const chartRef = useRef(null)
 
   const generateColor = () => {
-    const randomColor = Math.floor(Math.random() * 65535).toString(16)
-    const color = '#' + randomColor.padStart(4, '0') + 'FF'
-    return color
+    // Generate a random hue value between 0 and 360
+    const hue = Math.floor(Math.random() * 91) + 150
+    // Set a fixed saturation value of 50%
+    const saturation = 50
+    // Set a fixed lightness value of 50%
+    const lightness = 50
+    // Convert the HSL values to an RGB color string
+    const color = `hsl(${hue},${saturation}%,${lightness}%)`
+    return tinycolor(color).toHexString()
   }
   const randomColor = generateColor()
   const colors = tinycolor(randomColor).analogous()
