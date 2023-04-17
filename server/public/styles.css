@@ -1106,10 +1106,6 @@ video {
   height: 100vh;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .max-h-10 {
   max-height: 2.5rem;
 }
@@ -1256,6 +1252,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .min-w-0 {
