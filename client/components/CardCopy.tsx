@@ -6,20 +6,13 @@ import CardLocation from './CardLocation'
 
 interface Props {
   existingCard: Card | CardData
+  userId: number
 }
 
 const CardCopy = (props: Props) => {
   const [form, setForm] = useState({
-    category_id: props.existingCard.category_id,
-    user_id: 0,
-    name: '',
-    description: '',
-    date_created: new Date().valueOf(),
-    period: 0,
-    location: '',
-    completed: false,
-    total_count: 0,
-    comp_count: 0,
+    ...props.existingCard,
+    
   } as Card | CardData)
   const [isCustom, setIsCustom] = useState(false)
   const [customPeriod, setCustomPeriod] = useState({
@@ -34,12 +27,11 @@ const CardCopy = (props: Props) => {
   }
 
   useEffect(() => {
-    setForm({ ...props.existingCard })
-  }, [])
-
-  useEffect(() => {
-    console.log(form)
-  }, [form])
+    // setForm({ ...props.existingCard })
+    setForm(prev => ({...props.existingCard}))
+    console.log('check form', form)
+    console.log(props.existingCard)
+  }, [props.existingCard])
 
   useEffect(() => {
     if (props.existingCard.name) {
@@ -53,14 +45,12 @@ const CardCopy = (props: Props) => {
     if (address.length >= 2) {
       setForm({ ...form, location: `${address[0]}, ${address[1]}` })
     } else {
-      setForm({ ...form, location: '' })
+      // setForm({ ...form, location: '' })
     }
   }, [address])
 
   const handleSubmit = (e: any) => {
     if (form.name && form.location) {
-      console.log(e.target)
-      console.log(e.currentTarget.elements)
       if (e.target.value === 'Create') {
         addNewCard({
           ...form,
@@ -275,8 +265,8 @@ const CardCopy = (props: Props) => {
             </button>
           )}
         </form>
-        <div className='w-2/5'>
-          <CardLocation address={address} setAddress={setAddress} />
+        <div className="w-2/5 grow">
+          <CardLocation existingAddress={form.location} address={address} setAddress={setAddress} />
         </div>
       </div>
     </div>

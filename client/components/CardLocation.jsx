@@ -8,7 +8,7 @@ import { getAddressFromCoordinates } from '../apis/map'
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>
 
-const CardLocation = ({ address, setAddress }) => {
+const CardLocation = ({ address, setAddress, existingAddress }) => {
   const [center, setCenter] = useState({ lat: -36.857703, lng: 174.761052 })
   const [marker, setMarker] = useState(null)
   const [searchValue, setSearchValue] = useState('')
@@ -100,13 +100,13 @@ const CardLocation = ({ address, setAddress }) => {
           className=" appearance-none block w-1/2 bg-gray-200 text-gray-700 border rounded py-3 px-4 mt-3 ml-3 leading-tight focus:outline-none focus:bg-white"
           id="map"
           type="text"
-          placeholder="Title..."
+          placeholder="Search..."
           value={searchValue}
           onChange={handleSearchChange}
         />
         {searchSuggestions.map((suggestion) => (
           <div
-          className=' text-left bg-slate-300'
+            className=" text-left bg-slate-300"
             key={suggestion.place_id}
             onClick={() => handleSuggestionClick(suggestion)}
           >

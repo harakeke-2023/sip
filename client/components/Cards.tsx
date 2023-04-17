@@ -71,7 +71,7 @@ const Cards = (props: Props) => {
           className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
           style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
         >
-          <CardCopy existingCard={existingCard} />
+          <CardCopy existingCard={existingCard} userId={props.userId} />
         </div>
       )}
       {cards.map((card: Card) => (
@@ -122,6 +122,7 @@ const Cards = (props: Props) => {
                   setExistingCard({
                     ...card,
                   })
+                  console.log("exsiting Card = ", card)
                   setShowCardPopup((prev) => !prev)
                 }}
                 className=" opacity-80 dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
@@ -158,6 +159,7 @@ const Cards = (props: Props) => {
             total_count: 0,
             comp_count: 0,
           })
+          console.log("hello",props.userId, userDetail.id)
           setShowCardPopup((prev) => !prev)
         }}
         className="h-24 ml-4 self-center bg-gray-600  hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"

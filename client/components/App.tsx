@@ -3,12 +3,10 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import List from './List'
-import Chart from './Chart'
 import UserStats from './UserStats'
-import Location from './CardLocation'
+import MapPage from './MapPage'
 
 function App() {
-  
   return (
     <>
       <div className="app">
@@ -17,7 +15,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/list" element={<List />} />
           <Route path="/chart" element={<UserStats />} />
-          <Route path="/location" element={<Location />} />
+          <Route path="/location" element={<MapPage />} />
         </Routes>
         <Footer />
       </div>
