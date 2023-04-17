@@ -106,7 +106,7 @@ const List = () => {
                 })
                 handleCreateCategory()
               }}
-              className="fixed right-12 bottom-24  text-white px-6 py-6 pt-5 w-auto bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
+              className="fixed right-12 bottom-24  text-white px-6 py-6 pt-5 w-auto bg-red-600 rounded-full hover:bg-red-400 active:shadow-lg mouse shadow transition ease-in duration-150 focus:outline-none"
             >
               {/* This is Icon + */}
               <svg
