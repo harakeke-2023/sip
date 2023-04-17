@@ -8,7 +8,6 @@ import Cards from './Cards'
 import Cardpopup from './Cardpopup'
 import { FaPlus } from 'react-icons/fa'
 
-
 const List = () => {
   const { userDetail } = useStateContext()
   const [categories, setCategories]: any[] = useState([])
@@ -78,9 +77,9 @@ const List = () => {
                   setShowPopup((prev) => !prev)
                   setExistingData({ ...category })
                 }}
-                className="w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className=" flex flex-col  justify-center w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 ">
+                <h5 className=" mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 ">
                   {category.name}
                 </h5>
                 <p className="mt-1 text-lg text-gray-700 dark:text-gray-400">
@@ -91,15 +90,12 @@ const List = () => {
               <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
                   <Cards key={i} categoryId={category.id} />
-               
-
                 </div>
-
               </div>
             </li>
           ))}
         <li className="flex w-full">
-          <div className="w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 border-gray-200 rounded-lg shadow hover:bg-gray-100 bg-gray-600  dark:border-gray-700 hover:bg-gray-500 transition duration-300 ease-in-out">
+          <div className=" flex flex-col  justify-center w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5
               onClick={() => {
                 setExistingData({
@@ -110,7 +106,7 @@ const List = () => {
                 })
                 handleCreateCategory()
               }}
-              className="mb-2 text-white text-lg font-normal tracking-tight text-gray-900 dark:text-white"
+              className=" mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 "
             >
               Create Category
             </h5>

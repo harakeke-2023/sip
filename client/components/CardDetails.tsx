@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Card } from '../../models/Card'
 
-export function CardDetails({card}: {card:Card}) {
+export function CardDetails({ card }: { card: Card }) {
   const [showDetails, setShowDetails] = useState(false)
   return (
     <>
@@ -11,13 +11,13 @@ export function CardDetails({card}: {card:Card}) {
             <strong>Description:</strong> {card.description}
           </p>
 
-          <p className="mb-4">
+          <p className="">
             <strong>Location:</strong> {card.location}
           </p>
         </>
       )}
       <span
-        className={`inline-block mb-4 ${
+        className={`inline-block  ${
           showDetails ? 'text-gray-500' : 'text-gray-500'
         } cursor-pointer`}
         onClick={() => setShowDetails(!showDetails)}
@@ -44,7 +44,7 @@ export function CardDetails({card}: {card:Card}) {
           </>
         ) : (
           <>
-            <div className="flex items-center space-x-2">
+            <div className="flex  space-x-2 content-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

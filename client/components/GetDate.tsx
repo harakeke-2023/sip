@@ -82,10 +82,10 @@ function GetTimeLeft({
   console.log(parseInt(timeLeft))
 
   return (
-    <div>
+    <div className="flex justify-center">
       {card.completed ? null : (
         <div
-          className="rounded p-1 mt-2 inline-flex text-white text-xs"
+          className=" rounded p-1  inline-flex text-white text-xs"
           style={{
             background:
               !timeLeft.includes('hour') && !timeLeft.includes('hours')
@@ -106,7 +106,7 @@ function GetTimeLeft({
             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />{' '}
           </svg>
           &#160;&#160;
-          <p className='w-full'>{timeLeft}</p>
+          <p className="w-full">{timeLeft}</p>
         </div>
       )}
     </div>
