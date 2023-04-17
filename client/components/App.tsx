@@ -5,37 +5,19 @@ import Footer from './Footer'
 import List from './List'
 import Chart from './Chart'
 import UserStats from './UserStats'
+import Location from './CardLocation'
 
 function App() {
+  
   return (
     <>
       <div className="app">
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
-          {/* <Route
-            path="/cards"
-            element={
-              <CardPopup
-                existingCard={{
-                  id: 0,
-                  category_id: 0,
-                  user_id: 0,
-                  name: '',
-                  description: '',
-                  date_created: 0, // new Date().valueOf()
-                  period: 0,
-                  location: '',
-                  completed: false,
-                  total_count: 0,
-                  comp_count: 0,
-                }}
-              />
-            }
-          /> */}
           <Route path="/list" element={<List />} />
           <Route path="/chart" element={<UserStats />} />
-          {/* <Route path="/category" element={<CategoryPopup />} /> */}
+          <Route path="/location" element={<Location />} />
         </Routes>
         <Footer />
       </div>
