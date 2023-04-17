@@ -26,6 +26,22 @@ const UserStats = () => {
     getCardsbyUserId(userDetail.id).then((res) => setCards(() => res)).catch
   }, [])
 
+  const arr: string[] = []
+
+  const wordsToSentence = (words: string[]) => {
+    if (words.length === 0) {
+      return ''
+    } else if (words.length === 1) {
+      return words[0]
+    } else if (words.length === 2) {
+      return words.join(' and ')
+    } else {
+      const lastWord = words.pop()
+      const sentence = words.join(', ') + ', and ' + lastWord
+      return sentence
+    }
+  }
+
   return (
     <div className="flex flex-wrap w-screen p-4 bg-gray-100 flex-col">
       {' '}
@@ -39,8 +55,8 @@ const UserStats = () => {
             totalCount += card.total_count
           }
         })
-        return (
-          <>
+        if (totalCount > 0) {
+          return (
             <div className="flex flex-col items-center mb-4 w-full" key={i}>
               <h2 className="text-lg font-semibold">{category.name}</h2>
               <CompletedTasksBarChart
@@ -48,10 +64,13 @@ const UserStats = () => {
                 totalTasks={totalCount}
               />
             </div>
-            <h2></h2>
-          </>
-        )
+          )
+        } else {
+          arr.push(category.name)
+          return null
+        }
       })}
+      No data yet for {wordsToSentence(arr)}.
     </div>
   )
 }
