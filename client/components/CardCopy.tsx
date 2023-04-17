@@ -48,22 +48,26 @@ const CardCopy = (props: Props) => {
   }, [])
 
   const handleSubmit = (e: any) => {
-    if (e.target.value === 'Create') {
-      addNewCard({
-        ...form,
-        date_created: new Date().valueOf(),
-        period: form.period
-          ? form.period
-          : 1000 * 60 * customPeriod.minutes +
-            1000 * 60 * 60 * customPeriod.hours,
-      })
-        .then((res: any) => console.log('FrontEnd Res', res))
-        .catch((err) => console.log(err))
-    } else if (e.target.value === 'Update') {
-      // handleEditCategory()
-      updateCard(form)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err))
+    if(form.name && form.location && form.period) {
+      console.log(e.target)
+      console.log(e.currentTarget.elements)
+      if (e.target.value === 'Create') {
+        addNewCard({
+          ...form,
+          date_created: new Date().valueOf(),
+          period: form.period
+            ? form.period
+            : 1000 * 60 * customPeriod.minutes +
+              1000 * 60 * 60 * customPeriod.hours,
+        })
+          .then((res: any) => console.log('FrontEnd Res', res))
+          .catch((err) => console.log(err))
+      } else if (e.target.value === 'Update') {
+        // handleEditCategory()
+        updateCard(form)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err))
+      }
     }
   }
 

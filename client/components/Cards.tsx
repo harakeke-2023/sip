@@ -137,7 +137,7 @@ const Cards = (props: Props) => {
               name: '',
               description: '',
               date_created: new Date().valueOf(),
-              period: 0,
+              period: 86400000,
               location: '',
               completed: false,
               total_count: 0,

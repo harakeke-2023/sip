@@ -29,7 +29,10 @@ function Navbar() {
             setUserDetail(res[0])
           })
         }
-        navigator('/list')
+        if (window.location.pathname === '/') {
+          console.log(window.location.pathname)
+          navigator('/list')
+        }
       })
     }
   }, [user])
@@ -46,7 +49,7 @@ function Navbar() {
     <>
       <nav>
         <div className="max-w-screen flex items-center justify-between mx-auto p-4">
-          <a href="#" className="flex items-center">
+          <a href="/" className="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               className="h-15 mr-3"
