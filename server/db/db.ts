@@ -60,3 +60,10 @@ export function getCardData(
 ): Promise<CombinedData[]> {
   return db('cards').where('id', id).select()
 }
+
+export function getCardDataByUserId(
+  id: number,
+  db = connection
+): Promise<CombinedData[]> {
+  return db('cards').where('user_id', id).select()
+}

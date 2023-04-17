@@ -14,6 +14,16 @@ router.get('/card/:id', async (req, res) => {
   }
 })
 
+router.get('/cards/:id', async (req, res) => {
+  try {
+    const userId = Number(req.params.id)
+    const data = await db.getCardDataByUserId(userId)
+    res.json(data)
+  } catch (error) {
+    res.status(500).send(console.error(error))
+  }
+})
+
 router.get('/:id', async (req, res) => {
   try {
     const userId = Number(req.params.id)

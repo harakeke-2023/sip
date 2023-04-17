@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import List from './List'
 import Chart from './Chart'
+import UserStats from './UserStats'
 
 function App() {
   return (
@@ -33,10 +34,10 @@ function App() {
             }
           /> */}
           <Route path="/list" element={<List />} />
-          <Route path="/chart" element={<Chart />} />
+          <Route path="/chart" element={<UserStats />} />
           {/* <Route path="/category" element={<CategoryPopup />} /> */}
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </>
   )
