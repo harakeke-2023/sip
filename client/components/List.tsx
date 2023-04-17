@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Category } from '../../models/Category'
-import { findCategories } from '../apis/list'
+
 import { useStateContext } from '../context/StateContext'
+import { findCategories } from '../apis/list'
+import { Category } from '../../models/Category'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
-
 import { FaPlus } from 'react-icons/fa'
 
 const List = () => {
