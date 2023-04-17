@@ -4,19 +4,48 @@ import { getCardsbyUserId } from '../apis/cards'
 import { useStateContext } from '../context/StateContext'
 import { searchByAddress } from '../apis/map'
 
-const AnyReactComponent = ({ card }) => (
-  <div className="rounded-xl  py-4 px-2"
-    style={{border: "2px solid rgba(251, 146, 60)", width: "fit-content", backgroundColor: "rgba(255, 255, 255, 0.4)"}}
-  >
-    <div className='mt-4 mb-4 px-4'>
+const AnyReactComponent = ({ card }) => {
+  const [open, setOpen] = useState(false)
 
-      <h2 className="font-bold" style={{fontSize: "2.8rem"}}>{card.name}</h2>
-      <p className='mt-4' style={{fontSize: "1.4rem"}} >{card.description}</p>
-      <p className='mt-4' style={{fontSize: "1.4rem"}} >{card.location}</p>
+  return (
+    <>
+      {open ? (
+        <div
+          className="rounded-xl  py-4 px-2"
+          style={{
+            border: '2px solid rgba(251, 146, 60)',
+            width: 'fit-content',
+            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+          }}
+        >
+          <div className="mt-4 mb-4 px-4">
+            <h2 className="font-bold" style={{ fontSize: '2.8rem' }}>
+              {card.name}
+            </h2>
 
-    </div>
-  </div>
-)
+            <p className="mt-4" style={{ fontSize: '1.4rem' }}>
+              {card.location}
+            </p>
+            <button onClick={() => setOpen((prev) => !prev)}>Close</button>
+          </div>
+        </div>
+      ) : (
+        <div onClick={() => setOpen((prev) => !prev)}>
+          <i
+            className="fa-sharp fa-solid fa-location-dot"
+            style={{ fontSize: '2.4rem' }}
+          ></i>
+        </div>
+      )}
+    </>
+  )
+}
+
+// const MarkersComponent = () => {
+//   return (
+
+//   )
+// }
 
 const MapPage = () => {
   const [center, setCenter] = useState({ lat: -36.857703, lng: 174.761052 })
@@ -77,7 +106,6 @@ const MapPage = () => {
             )
           })} */}
         {markers}
-        {/* <i class="fa-sharp fa-solid fa-location-dot"></i> */}
       </GoogleMapReact>
     </div>
   )
