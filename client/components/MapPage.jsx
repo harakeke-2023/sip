@@ -5,8 +5,15 @@ import { useStateContext } from '../context/StateContext'
 import { searchByAddress } from '../apis/map'
 
 const AnyReactComponent = ({ card }) => (
-  <div className="py-6 px-6 bg-white  border-2 border-orange-300">
-    <h2 className="font-bold text-2xl">{card.name}</h2>
+  <div className="rounded-xl  py-4 px-2"
+    style={{border: "2px solid rgba(251, 146, 60)", width: "fit-content", backgroundColor: "rgba(255, 255, 255, 0.4)"}}
+  >
+    <div className='mt-4 mb-4 px-4'>
+      <h2 className="font-bold" style={{fontSize: "2.8rem"}}>{card.name}</h2>
+      <p className='mt-4' style={{fontSize: "1.4rem"}} >{card.description}</p>
+      <p className='mt-4' style={{fontSize: "1.4rem"}} >{card.location}</p>
+
+    </div>
   </div>
 )
 
@@ -69,6 +76,7 @@ const MapPage = () => {
             )
           })} */}
         {markers}
+        {/* <i class="fa-sharp fa-solid fa-location-dot"></i> */}
       </GoogleMapReact>
     </div>
   )
