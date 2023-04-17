@@ -5,7 +5,6 @@ import { useStateContext } from '../context/StateContext'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
 
-import Cardpopup from './Cardpopup'
 import { FaPlus } from 'react-icons/fa'
 
 const List = () => {
@@ -79,7 +78,7 @@ const List = () => {
                 }}
                 className="w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 ">
+                <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 category_underline">
                   {category.name}
                 </h5>
                 <p className="mt-1 text-lg text-gray-700 dark:text-gray-400">

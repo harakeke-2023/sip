@@ -34,6 +34,7 @@ function Navbar() {
           navigator('/list')
         }
       })
+
     }
   }, [user])
 
@@ -48,7 +49,7 @@ function Navbar() {
   return (
     <>
       <nav>
-        <div className="max-w-screen flex items-center justify-between mx-auto p-4">
+        <div className="mb-2 mt-2 max-w-screen flex items-center justify-between mx-auto p-4">
           <a href="/" className="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
