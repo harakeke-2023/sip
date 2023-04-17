@@ -6,13 +6,14 @@ exports.seed = async function (knex) {
   // Deletes ALL existing entries
   await knex('users').insert([
     {
-      id: 4,
+
+      id: 3,
       name: 'Jiho Park',
       username: 'jiho',
       email: 'yoho4613@gmail.com',
     },
     {
-      id: 3,
+      id: 1,
       name: 'Maycon',
       username: 'maycon_assis',
       email: 'may.con.fa@hotmail.com',

@@ -1,11 +1,10 @@
 import Landing from './Landing'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './Navbar'
-// import Footer from './Footer'
-import CategoryPopup from './Categorypopup'
 import Footer from './Footer'
 import List from './List'
-import CardPopup from './Cardpopup'
+import Chart from './Chart'
+import UserStats from './UserStats'
 
 function App() {
   return (
@@ -34,11 +33,11 @@ function App() {
               />
             }
           /> */}
-
           <Route path="/list" element={<List />} />
+          <Route path="/chart" element={<UserStats />} />
           {/* <Route path="/category" element={<CategoryPopup />} /> */}
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </>
   )

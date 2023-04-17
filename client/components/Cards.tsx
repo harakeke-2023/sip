@@ -136,26 +136,28 @@ const Cards = (props: Props) => {
           </div>
         </div>
       ))}
-      <button
-        onClick={() => {
-          setExistingCard({
-            category_id: props.categoryId,
-            user_id: userDetail.id,
-            name: '',
-            description: '',
-            date_created: new Date().valueOf(),
-            period: 0,
-            location: '',
-            completed: false,
-            total_count: 0,
-            comp_count: 0,
-          })
-          setShowCardPopup((prev) => !prev)
-        }}
-        className="h-24 ml-4 self-center bg-gray-600  hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
-      >
-        <FaPlus size={16} />
-      </button>
+
+        <button
+          onClick={() => {
+            setExistingCard({
+              category_id: props.categoryId,
+              user_id: userDetail.id,
+              name: '',
+              description: '',
+              date_created: new Date().valueOf(),
+              period: 86400000,
+              location: '',
+              completed: false,
+              total_count: 0,
+              comp_count: 0,
+            })
+            setShowCardPopup((prev) => !prev)
+          }}
+          className="h-24 ml-4 self-center bg-gray-600  hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
+        >
+          <FaPlus size={16} />
+        </button>
+
     </div>
   )
 }

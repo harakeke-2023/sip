@@ -30,6 +30,10 @@ function GetTimeLeft({
 
   const [timeLeft, setTimeLeft] = useState('')
   useEffect(() => {
+    handleCardUpdate({
+      ...card,
+      total_count: Math.floor((Math.floor(Date.now()) - dateCreated) / period),
+    })
     setInterval(() => {
       const currentDate = Math.floor(Date.now())
       const goalDateEpoch = calculateNextDate(currentDate, dateCreated, period)
@@ -38,7 +42,7 @@ function GetTimeLeft({
       if (timeLeft <= 1000) {
         getCard(card.id)
           .then((res) => {
-            console.log(res)
+
             const card = res[0]
             handleCardUpdate({
               ...card,
@@ -78,8 +82,6 @@ function GetTimeLeft({
       setTimeLeft(String(formattedElapsedTime))
     }, 1000)
   }, [])
-  console.log(timeLeft)
-  console.log(parseInt(timeLeft))
 
   return (
     <div className="flex justify-center">
