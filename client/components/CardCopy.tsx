@@ -48,7 +48,7 @@ const CardCopy = (props: Props) => {
   }, [])
 
   const handleSubmit = (e: any) => {
-    if(form.name && form.location && form.period) {
+    if (form.name && form.location) {
       console.log(e.target)
       console.log(e.currentTarget.elements)
       if (e.target.value === 'Create') {
@@ -98,7 +98,13 @@ const CardCopy = (props: Props) => {
               placeholder="Title...."
               required
               value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              onChange={(e) => {
+                if (e.target.value.length <= 25) {
+                  setForm({ ...form, name: e.target.value })
+                } else {
+                  alert("Title should be less than 20 characters")
+                }
+              }}
             />
           </div>
           <div className="w-full md:w-1/2 px-3">

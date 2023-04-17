@@ -7,13 +7,13 @@ exports.seed = async function (knex) {
   await knex('users').insert([
     {
 
-      id: 3,
+      id: 1,
       name: 'Jiho Park',
       username: 'jiho',
       email: 'yoho4613@gmail.com',
     },
     {
-      id: 1,
+      id: 3,
       name: 'Maycon',
       username: 'maycon_assis',
       email: 'may.con.fa@hotmail.com',
@@ -25,7 +25,7 @@ exports.seed = async function (knex) {
       email: 'zzz@hotmail.com',
     },
     {
-      id: 1,
+      id: 4,
       name: 'Jonathan',
       username: 'Jonathan',
       email: 'dionatan.narciso@gmail.com',
