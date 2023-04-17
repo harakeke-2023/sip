@@ -40,16 +40,13 @@ const UserStats = () => {
           }
         })
         return (
-          <>
-            <div className="flex flex-col items-center mb-4 w-full" key={i}>
-              <h2 className="text-lg font-semibold">{category.name}</h2>
-              <CompletedTasksBarChart
-                completedTasks={totalComp}
-                totalTasks={totalCount}
-              />
-            </div>
-            <h2></h2>
-          </>
+          <div className="flex flex-col items-center mb-4 w-full" key={i}>
+            <h2 className="text-lg font-semibold">{category.name}</h2>
+            <CompletedTasksBarChart
+              completedTasks={totalComp}
+              totalTasks={totalCount}
+            />
+          </div>
         )
       })}
     </div>
