@@ -10,6 +10,7 @@ import { FaPlus } from 'react-icons/fa'
 
 interface Props {
   categoryId: number
+  userId: number
 }
 
 const Cards = (props: Props) => {
@@ -60,8 +61,10 @@ const Cards = (props: Props) => {
     <div className="flex shrink-0 flex-row">
       {showCardPopup && (
         <div
+          id="background"
           onClick={(e: any) => {
-            if (e.target.tagName === 'DIV') {
+            if (e.target.id === 'background') {
+              console.log(e.target.id)
               setShowCardPopup((prev) => !prev)
             }
           }}
@@ -77,7 +80,7 @@ const Cards = (props: Props) => {
           className="text-center flex flex-col justify-between items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700  p-4 "
           style={{ background: card.completed ? 'darkgray' : 'white' }}
         >
-          <div className='flex flex-col min-h-1/5 justify-between'>
+          <div className="flex flex-col min-h-1/5 justify-between">
             <div className="mt-2">
               <strong>
                 <p
@@ -92,7 +95,7 @@ const Cards = (props: Props) => {
               <CardDetails card={card} />
             </div>
           </div>
-          <div className='flex mt-4 flex-col min-h-3/5 justify-between items-center'>
+          <div className="flex mt-4 flex-col min-h-3/5 justify-between items-center">
             <div className="mt-2 w-36">
               <input
                 className="bg-black"
@@ -145,7 +148,7 @@ const Cards = (props: Props) => {
         onClick={() => {
           setExistingCard({
             category_id: props.categoryId,
-            user_id: userDetail.id,
+            user_id: userDetail.id || props.userId,
             name: '',
             description: '',
             date_created: new Date().valueOf(),

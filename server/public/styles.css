@@ -1261,6 +1261,22 @@ video {
   width: 100vw;
 }
 
+.w-4\/5 {
+  width: 80%;
+}
+
+.w-3\/5 {
+  width: 60%;
+}
+
+.w-2\/5 {
+  width: 40%;
+}
+
+.w-10\/12 {
+  width: 83.333333%;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
