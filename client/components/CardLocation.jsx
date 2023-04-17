@@ -6,7 +6,7 @@ import usePlacesAutocomplete, {
 } from 'use-places-autocomplete'
 import { getAddressFromCoordinates } from '../apis/map'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>
+const AnyReactComponent = ({ text }) => <div></div>
 
 const CardLocation = ({ address, setAddress, existingAddress }) => {
   const [center, setCenter] = useState({ lat: -36.857703, lng: 174.761052 })
