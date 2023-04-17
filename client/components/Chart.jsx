@@ -30,12 +30,12 @@ const CompletedTasksBarChart = ({ completedTasks, totalTasks }) => {
       datasets: [
         {
           label: 'Completed Tasks',
-          data: [completedTasks],
+          data: [(completedTasks / totalTasks) * 100],
           backgroundColor: colorsHex[0],
         },
         {
           label: 'Total Tasks',
-          data: [totalTasks],
+          data: [100 - (completedTasks / totalTasks) * 100],
           backgroundColor: colorsHex[2],
         },
       ],
@@ -47,6 +47,27 @@ const CompletedTasksBarChart = ({ completedTasks, totalTasks }) => {
 
       options: {
         indexAxis: 'y',
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function (context) {
+                let label = context.dataset.label
+                // console.log(context.dataset.label)
+                // console.log(context.parsed.y)
+                if (label) {
+                  label += ': '
+                }
+                if (context.dataset.label == 'Total Tasks') {
+                  label += String(totalTasks)
+                } else if (context.dataset.label == 'Completed Tasks') {
+                  label += String(completedTasks)
+                }
+                // label += context.dataset.data
+                return label
+              },
+            },
+          },
+        },
         title: {
           display: true,
           text: 'Completed Tasks / Total Tasks',
