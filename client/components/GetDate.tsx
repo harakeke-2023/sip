@@ -30,6 +30,10 @@ function GetTimeLeft({
 
   const [timeLeft, setTimeLeft] = useState('')
   useEffect(() => {
+    handleCardUpdate({
+      ...card,
+      total_count: Math.floor((Math.floor(Date.now()) - dateCreated) / period),
+    })
     setInterval(() => {
       const currentDate = Math.floor(Date.now())
       const goalDateEpoch = calculateNextDate(currentDate, dateCreated, period)
@@ -106,7 +110,7 @@ function GetTimeLeft({
             <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />{' '}
           </svg>
           &#160;&#160;
-          <p className='w-full'>{timeLeft}</p>
+          <p className="w-full">{timeLeft}</p>
         </div>
       )}
     </div>

@@ -10,12 +10,6 @@ const CompletedTasksBarChart = ({ completedTasks, totalTasks }) => {
   const chartRef = useRef(null)
 
   useEffect(() => {
-
-
-    
-
-
-
     const chartData = {
       labels: ['Completed Tasks'],
       datasets: [
@@ -75,7 +69,7 @@ const CompletedTasksBarChart = ({ completedTasks, totalTasks }) => {
     }
   }, [completedTasks, totalTasks])
 
-  return <canvas ref={chartRef}></canvas>
+  return <canvas className="w-24 h-24" ref={chartRef}></canvas>
 }
 
 export default CompletedTasksBarChart

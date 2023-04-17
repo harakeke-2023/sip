@@ -27,7 +27,7 @@ const UserStats = () => {
   }, [])
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-wrap w-screen">
       {categories.map((category: Card, i: number) => {
         let totalComp = 0
         let totalCount = 0
@@ -39,7 +39,8 @@ const UserStats = () => {
           }
         })
         return (
-          <div className="h-24" key={i}>
+          <div className="flex" key={i}>
+            {category.name}
             <CompletedTasksBarChart
               completedTasks={totalComp}
               totalTasks={totalCount}
