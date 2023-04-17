@@ -77,9 +77,9 @@ const List = () => {
                   setShowPopup((prev) => !prev)
                   setExistingData({ ...category })
                 }}
-                className=" flex flex-col  justify-center w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 className=" mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 ">
+                <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 ">
                   {category.name}
                 </h5>
                 <p className="mt-1 text-lg text-gray-700 dark:text-gray-400">
@@ -94,9 +94,9 @@ const List = () => {
               </div>
             </li>
           ))}
-        <li className="flex w-full">
-          <div className=" flex flex-col  justify-center w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5
+        <button>
+          <li className="flex w-full">
+            <div
               onClick={() => {
                 setExistingData({
                   id: 0,
@@ -106,12 +106,24 @@ const List = () => {
                 })
                 handleCreateCategory()
               }}
-              className=" mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 "
+              className="fixed right-12 bottom-24  text-white px-4 py-4 pt-3 w-auto bg-red-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
             >
-              Create Category
-            </h5>
-          </div>
-        </li>
+              {/* This is Icon + */}
+              <svg
+                viewBox="0 0 20 20"
+                enableBackground="new 0 0 20 20"
+                className="w-6 h-6 inline-block"
+              >
+                <path
+                  fill="#FFFFFF"
+                  d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
+                                    C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
+                                    C15.952,9,16,9.447,16,10z"
+                />
+              </svg>
+            </div>
+          </li>
+        </button>
       </ul>
     </div>
   )
