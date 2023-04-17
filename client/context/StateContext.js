@@ -4,6 +4,7 @@ const UserContext = createContext()
 
 export const StateContext = ({ children }) => {
   const [userDetail, setUserDetail] = useState({})
+  const [mapAPI, setMapAPI] = useState("")
   
   return (
     <UserContext.Provider

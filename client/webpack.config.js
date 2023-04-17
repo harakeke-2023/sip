@@ -1,4 +1,7 @@
 const { join } = require('node:path')
+const webpack = require('webpack'); 
+
+require('dotenv').config({ path: './.env' })
 
 module.exports = {
   entry: ['/client/index.tsx'],
@@ -6,6 +9,11 @@ module.exports = {
     path: join(__dirname, '..', 'server', 'public'),
     filename: 'bundle.js',
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
+  ],
   mode: 'development',
   module: {
     rules: [
