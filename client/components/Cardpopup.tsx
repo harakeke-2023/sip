@@ -167,12 +167,13 @@ const CardPopup = (props: Props) => {
             </div>
 
             {/* PERIOD DAYS */}
-            <div className="relative">
+
+            <div className="relative justify-self-center">
               <label htmlFor="period" className="form__label">
                 Period
               </label>
               <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className=" block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 placeholder="Period"
                 id="grid-state"
                 name="period"

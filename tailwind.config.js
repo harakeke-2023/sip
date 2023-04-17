@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    safelist: [
+      'animate-[tada_1s_ease-in-out]',
+      'animate-[tada_1s_ease-in-out]',
+    ],
   },
   plugins: [require('tw-elements/dist/plugin.cjs')],
 }

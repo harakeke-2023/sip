@@ -84,10 +84,10 @@ function GetTimeLeft({
   }, [])
 
   return (
-    <div>
+    <div className="flex justify-center">
       {card.completed ? null : (
         <div
-          className="rounded p-1 mt-2 inline-flex text-white text-xs"
+          className=" rounded p-1  inline-flex text-white text-xs"
           style={{
             background:
               !timeLeft.includes('hour') && !timeLeft.includes('hours')

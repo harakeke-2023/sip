@@ -137,22 +137,22 @@ const CardCopy = (props: Props) => {
                 setForm({ ...form, description: e.target.value })
               }
             />
-            <p className="text-gray-600 text-xs italic">
+            <p className="text-gray-600 text-xs italic ">
               Make it as long and as crazy as you'd like
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap -mx-3 mb-2">
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div className="flex flex-wrap -mx-3 mb-2 justify-center ">
+          <div className="w-full md:w-1/3 px-3 mb-6  md:mb-0">
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-state"
             >
               Period
             </label>
-            <div className="relative">
+            <div className="relative ">
               <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="justify-self-center block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
                 required
                 onChange={(e) => {
@@ -180,58 +180,55 @@ const CardCopy = (props: Props) => {
               </div>
             </div>
           </div>
-
-          {isCustom && (
-            <>
-              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="hours"
-                >
-                  Hours
-                </label>
-                <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="hours"
-                  type="number"
-                  placeholder="hours..."
-                  value={customPeriod.hours}
-                  onChange={(e) => {
-                    setCustomPeriod({
-                      ...customPeriod,
-                      hours: Number(e.target.value),
-                    })
-                  }}
-                />
-              <label htmlFor="custom-date" className="align-center">
-                  :
-                </label>
-              </div>
-              
-              <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="minutes"
-                >
-                  Minutes
-                </label>
-                <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="minutes"
-                  type="number"
-                  placeholder="Minutes..."
-                  value={customPeriod.minutes}
-                  onChange={(e) => {
-                    setCustomPeriod({
-                      ...customPeriod,
-                      minutes: Number(e.target.value),
-                    })
-                  }}
-                />
-              </div>
-            </>
-          )}
         </div>
+        {isCustom && (
+          <div className="flex justify-center mb-3 mt-5">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0 ">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="hours"
+              >
+                Hours
+              </label>
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="hours"
+                type="number"
+                placeholder="hours..."
+                value={customPeriod.hours}
+                onChange={(e) => {
+                  setCustomPeriod({
+                    ...customPeriod,
+                    hours: Number(e.target.value),
+                  })
+                }}
+              />
+            </div>
+            <span className=" font-bold self-end mb-3">:</span>
+
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="minutes"
+              >
+                Minutes
+              </label>
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="minutes"
+                type="number"
+                placeholder="Minutes..."
+                value={customPeriod.minutes}
+                onChange={(e) => {
+                  setCustomPeriod({
+                    ...customPeriod,
+                    minutes: Number(e.target.value),
+                  })
+                }}
+              />
+            </div>
+          </div>
+        )}
         <button
           type="submit"
           onClick={handleSubmit}
