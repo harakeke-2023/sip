@@ -50,3 +50,11 @@ font-family: 'Roboto Mono', monospace;
 --royal-blue-900: #30347f;
 --royal-blue-950: #1c1d4a;
 }
+
+.card_background {
+  background-color: #f5f5f5;
+}
+
+.card_background:hover {
+  background-color: black;
+}

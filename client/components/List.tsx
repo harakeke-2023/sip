@@ -36,6 +36,7 @@ const List = () => {
 
   return (
     <div>
+      
       {showPopup && (
         <div
           onClick={(e: any) => {
@@ -69,17 +70,17 @@ const List = () => {
           categories.map((category: Category, i: number) => (
             <li
               key={i}
-              className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full mb-1 mx-1"
+              className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full mb-1 mx-1 "
             >
               <div
                 onClick={() => {
                   setShowPopup((prev) => !prev)
                   setExistingData({ ...category })
                 }}
-                className="flex flex-col mr-1 justify-center text-left cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-blue-50 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className=" flex flex-col mr-1 justify-center text-left cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-perano-50 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
                 <div>
-                  <h5 className="text-3xl font-bold text-blue-500 dark:text-blue-300 category_underline">
+                  <h5 className="text-3xl font-bold category_underline">
                     {category.name}
                   </h5>
                 </div>
@@ -90,7 +91,7 @@ const List = () => {
                 </div>
               </div>
 
-              <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-blue-50 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+              <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-perano-50 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
                   <Cards
                     key={i}

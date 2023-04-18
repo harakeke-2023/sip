@@ -58,7 +58,7 @@ const Cards = (props: Props) => {
   }
 
   return (
-    <div className="flex shrink-0 flex-row space-x-1 ">
+    <div className="flex shrink-0 flex-row space-x-1">
       {showCardPopup && (
         <div
           id="background"
@@ -68,7 +68,7 @@ const Cards = (props: Props) => {
               setShowCardPopup((prev) => !prev)
             }
           }}
-          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
+          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center"
           style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
         >
           <CardCopy existingCard={existingCard} userId={props.userId} />
@@ -77,8 +77,10 @@ const Cards = (props: Props) => {
       {cards.map((card: Card) => (
         <div
           key={card.id}
-          className="text-center flex flex-col justify-between items-center bg-blue-300 border rounded-lg shadow  p-4 "
-          style={{ background: card.completed ? 'darkgray' : 'perano' }}
+          className={`text-center flex   flex-col justify-between items-center border rounded-lg shadow p-4 ${
+            card.completed ? 'bg-slate-300' : 'bg-white'
+          } ${!card.completed && 'hover:bg-perano-100'}`}
+          // style={{ background: 'hover:bg-slate-400' }}
         >
           <div className="flex flex-col min-h-1/5 justify-between">
             <div className="mt-2">
