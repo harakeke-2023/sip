@@ -34,6 +34,7 @@ const List = () => {
 
   return (
     <div>
+      
       {showPopup && (
         <div
           onClick={(e: any) => {
@@ -60,18 +61,24 @@ const List = () => {
                   setShowPopup((prev) => !prev)
                   setExistingData({ ...category })
                 }}
-                className="text-center cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className=" flex flex-col mr-1 justify-center text-left cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-perano-50 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 category_underline">
-                  {category.name}
-                </h5>
-                <p className="mt-1 text-lg text-gray-700 dark:text-gray-400">
-                  {category.description}
-                </p>
+                <div>
+                  <h5 className="text-3xl font-bold category_underline">
+                    {category.name}
+                  </h5>
+                </div>
+                <div>
+                  <p className="mt-2 text-lg text-gray-700 dark:text-gray-400">
+                    {category.description}
+                  </p>
+                </div>
               </div>
+
 
               <div className="flex flex-nowrap justify-center sm:justify-start items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <div className="flex flex-row  flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
+
                   <Cards
                     key={i}
                     userId={userDetail.id}
