@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Category } from '../../models/Category'
-import { findCategories } from '../apis/list'
+
 import { useStateContext } from '../context/StateContext'
+import { findCategories } from '../apis/list'
+import { Category } from '../../models/Category'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
+
+import DroppableCategory from './DroppableCategory'
+import { FaPlus } from 'react-icons/fa'
+import { getCards } from '../apis/cards'
 
 const List = () => {
   const { userDetail } = useStateContext()
@@ -32,6 +37,15 @@ const List = () => {
     setShowPopup((prev) => !prev)
   }
 
+  async function fetchCards(userId: number, setState: (prev: any) => void) {
+    try {
+      const res = await getCards(userId)
+      setState(() => [...res])
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div>
       {showPopup && (
@@ -48,9 +62,13 @@ const List = () => {
         </div>
       )}
 
-      <ul className="flex flex-wrap">
+
+      <ul className="flex flex-col ">
+
         {categories.length &&
           categories.map((category: Category, i: number) => (
+                      <DroppableCategory fetchCards={fetchCards} key={i} id={category.id}>
+
             <li
               key={i}
               className="flex flex-col sm:flex-row items-center sm:items-start bg-white dark:bg-gray-800 rounded-lg shadow-md w-full mb-1"
@@ -80,10 +98,13 @@ const List = () => {
                     key={i}
                     userId={userDetail.id}
                     categoryId={category.id}
+                    fetchCards={fetchCards}
                   />
+
                 </div>
-              </div>
-            </li>
+                </div>
+              </li>
+            </DroppableCategory>
           ))}
         <button>
           <li className="flex w-full">
