@@ -266,7 +266,7 @@ const CardCopy = (props: Props) => {
             )}
           </form>
         </div>
-        <div className="sm:w-2/5 w-full  sm:h-auto h-64 grow">
+        <div className="sm:w-2/5 w-full  sm:h-auto h-64 grow px-3 py-3">
           <CardLocation
             existingAddress={form.location}
             address={address}
