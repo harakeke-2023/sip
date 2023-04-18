@@ -97,7 +97,7 @@ const CardLocation = ({ address, setAddress, existingAddress }) => {
     <div className="relative" style={{ height: '100%', width: '100%' }}>
       <div className="absolute top-0 left-0 z-10">
         <input
-          className=" appearance-none block w-1/2 bg-gray-200 text-gray-700 border rounded py-3 px-4 mt-3 ml-3 leading-tight focus:outline-none focus:bg-white"
+          className=" appearance-none block w-1/2 bg-perano-50 text-gray-700 rounded py-3 px-4 mt-3 ml-3 leading-tight focus:outline-none focus:bg-white"
           id="map"
           type="text"
           placeholder="Search..."
