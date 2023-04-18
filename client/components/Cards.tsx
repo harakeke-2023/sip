@@ -58,7 +58,7 @@ const Cards = (props: Props) => {
   }
 
   return (
-    <div className="flex shrink-0 flex-row">
+    <div className="flex shrink-0 flex-row space-x-1 ">
       {showCardPopup && (
         <div
           id="background"
@@ -77,8 +77,8 @@ const Cards = (props: Props) => {
       {cards.map((card: Card) => (
         <div
           key={card.id}
-          className="text-center flex flex-col justify-between items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700  p-4 "
-          style={{ background: card.completed ? 'darkgray' : 'white' }}
+          className="text-center flex flex-col justify-between items-center bg-blue-300 border rounded-lg shadow  p-4 "
+          style={{ background: card.completed ? 'darkgray' : 'perano' }}
         >
           <div className="flex flex-col min-h-1/5 justify-between">
             <div className="mt-2">
@@ -122,7 +122,7 @@ const Cards = (props: Props) => {
                   setExistingCard({
                     ...card,
                   })
-                  console.log("exsiting Card = ", card)
+                  console.log('exsiting Card = ', card)
                   setShowCardPopup((prev) => !prev)
                 }}
                 className=" opacity-80 dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
@@ -159,7 +159,7 @@ const Cards = (props: Props) => {
             total_count: 0,
             comp_count: 0,
           })
-          console.log("hello",props.userId, userDetail.id)
+          console.log('hello', props.userId, userDetail.id)
           setShowCardPopup((prev) => !prev)
         }}
         className="h-24 ml-4 self-center bg-gray-600  hover:bg-gray-400 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out"
