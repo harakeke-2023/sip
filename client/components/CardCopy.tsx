@@ -77,24 +77,94 @@ const CardCopy = (props: Props) => {
   }
 
   return (
-    <div className="   bg-white rounded-lg w-4/5">
+
+    <div className=" bg-perano-100   rounded-lg w-4/5">
       <div className="flex flex-col sm:flex-row overflow-auto h-4/5 ">
         <div className=" font-bold mt-2 mb-2 sm:mt-8  sm:mb-6">
           <div className="text-2xl">{isNew ? 'Add Card' : 'Edit Card'}</div>
-          <form className=" sm:h-auto max-h-1/2 sm:min-w-3/5 w-full max-w-lg bg-white py-4 px-4 sm:py-16 sm:px-16 rounded-lg">
-            <div className="flex flex-wrap -mx-3 mb-6">
-              <div className="w-full md:w-1/2 px-1 mb-2 sm:px-3 sm:mb-6 md:mb-0">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="title"
-                >
-                  Title
-                </label>
-                <input
-                  className="appearance-none block w-full bg-gray-100 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                  id="title"
-                  type="text"
-                  placeholder="Title..."
+          <form className=" bg-perano-100 sm:h-auto max-h-1/2 sm:min-w-3/5 w-full max-w-lg py-4 px-4 sm:py-16 sm:px-16 rounded-lg">
+
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/2 px-1 mb-2 sm:px-3 sm:mb-6 md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+                htmlFor="title"
+              >
+                Title
+              </label>
+              <input
+                className="bg-perano-50 appearance-none block w-full bg-gray-200 text-gray-800 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                id="title"
+                type="text"
+                placeholder="Title..."
+                required
+                value={form.name}
+                onChange={(e) => {
+                  if (e.target.value.length <= 25) {
+                    setForm({ ...form, name: e.target.value })
+                  } else {
+                    alert('Title should be less than 20 characters')
+                  }
+                }}
+
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-3">
+              <label
+                className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+                htmlFor="location"
+              >
+                Location
+              </label>
+              <input
+                className="bg-perano-50 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="location"
+                type="text"
+                required
+                disabled
+                placeholder="Find the location from Map ..."
+                value={form.location}
+                onChange={(e) => setForm({ ...form, location: e.target.value })}
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full px-3">
+              <label
+                className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+                htmlFor="description"
+              >
+                Description
+              </label>
+              <textarea
+                className="bg-perano-50 appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="description"
+                rows={window.innerWidth < 700 ? 4 : 6}
+                placeholder="Description..."
+                value={form.description}
+                onChange={(e) =>
+                  setForm({ ...form, description: e.target.value })
+                }
+              />
+              <p className="text-gray-600 text-xs italic ">
+                Make it as long and as crazy as you`d like
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap -mx-3 mb-2 justify-center ">
+            <div className="w-full md:w-1/3 px-3 mb-6  md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+                htmlFor="grid-state"
+              >
+                Period
+              </label>
+              <div className="relative">
+                <select
+                  className="bg-perano-50 justify-self-center block appearance-none w-full  text-gray-800 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white"
+                  id="grid-state"
+
                   required
                   value={form.name}
                   onChange={(e) => {
@@ -131,19 +201,25 @@ const CardCopy = (props: Props) => {
               <div className="w-full px-3">
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="description"
+                  htmlFor="hours"
+
                 >
                   Description
                 </label>
-                <textarea
-                  className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="description"
-                  rows={window.innerWidth < 700 ? 4 : 6}
-                  placeholder="Description..."
-                  value={form.description}
-                  onChange={(e) =>
-                    setForm({ ...form, description: e.target.value })
-                  }
+
+                <input
+                  className="bg-perano-50 appearance-none block w-full bg-gray-200 text-gray-700  rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="hours"
+                  type="number"
+                  placeholder="hours..."
+                  value={customPeriod.hours}
+                  onChange={(e) => {
+                    setCustomPeriod({
+                      ...customPeriod,
+                      hours: Number(e.target.value),
+                    })
+                  }}
+
                 />
                 <p className="text-gray-600 text-xs italic ">
                   Make it as long and as crazy as you`d like
@@ -156,9 +232,11 @@ const CardCopy = (props: Props) => {
                 <label
                   className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                   htmlFor="grid-state"
+
                 >
                   Period
                 </label>
+
                 <div className="relative ">
                   <select
                     className="justify-self-center block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -188,6 +266,7 @@ const CardCopy = (props: Props) => {
                     </svg>
                   </div>
                 </div>
+
               </div>
             </div>
             {isCustom && (

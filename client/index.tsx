@@ -5,12 +5,6 @@ import { StateContext } from './context/StateContext'
 
 import App from './components/App'
 
-// Set the API key on the window object
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <StateContext>

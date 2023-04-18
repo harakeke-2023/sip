@@ -98,6 +98,7 @@ const CardLocation = ({ address, setAddress, existingAddress }) => {
       <div className="absolute top-0 left-0 z-10">
         <input
           className=" appearance-none block w-7/3 bg-gray-100 text-gray-700 border rounded py-3 px-4 mt-3 ml-3 leading-tight focus:outline-none focus:bg-white"
+
           id="map"
           type="text"
           placeholder="Search..."

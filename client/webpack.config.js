@@ -1,5 +1,5 @@
 const { join } = require('node:path')
-const webpack = require('webpack'); 
+const webpack = require('webpack')
 
 require('dotenv').config({ path: './.env' })
 

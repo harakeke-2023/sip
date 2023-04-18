@@ -48,7 +48,6 @@ const List = () => {
 
   return (
     <div>
-      
       {showPopup && (
         <div
           onClick={(e: any) => {
@@ -56,7 +55,7 @@ const List = () => {
               setShowPopup((prev) => !prev)
             }
           }}
-          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
+          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center  "
           style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
         >
           <Categorypopup id={existingData.id} existingCategory={existingData} />
@@ -66,43 +65,36 @@ const List = () => {
       <ul className="flex flex-col ">
         {categories.length &&
           categories.map((category: Category, i: number) => (
-                      <DroppableCategory fetchCards={fetchCards} key={i} id={category.id}>
-
-            <li
-              key={i}
-              className="flex flex-col sm:flex-row items-center sm:items-start bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
-            >
-              <div
+            <DroppableCategory key={i} fetchCards={fetchCards} id={category.id}>
+              <li
+                className="flex flex-col sm:flex-row items-center sm:items-stretch bg-white dark:bg-gray-800 rounded-lg shadow-md w-full mb-1  "
                 onClick={() => {
                   setShowPopup((prev) => !prev)
                   setExistingData({ ...category })
                 }}
-                className=" flex flex-col mr-1 justify-center text-left cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-perano-50 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
-                <div>
-                  <h5 className="text-3xl font-bold category_underline">
-                    {category.name}
-                  </h5>
+                <div className=" mr-1 ml-1 flex flex-col justify-center text-left cursor-pointer w-full sm:w-64 overflow-auto flex-shrink-0 min-w-0 p-6  bg-perano-50 border-perano-300 border-2 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                  <div>
+                    <h5 className="text-3xl font-bold category_underline">
+                      {category.name}
+                    </h5>
+                  </div>
+                  <div>
+                    <p className="mt-2 text-lg text-gray-700 dark:text-gray-400">
+                      {category.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="mt-2 text-lg text-gray-700 dark:text-gray-400">
-                    {category.description}
-                  </p>
-                </div>
-              </div>
-
-
-              <div className="flex flex-nowrap justify-center sm:justify-start items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <div className="flex flex-row  flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
-
-                  <Cards
-                    key={i}
-                    userId={userDetail.id}
-                    categoryId={category.id}
-                    fetchCards={fetchCards}
-                  />
-
-                </div>
+                <div className=" flex flex-nowrap justify-center sm:justify-start items-start w-full h-65 overflow-hidden p-6 bg-perano-50 border-2 border-perano-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                  <div className="flex flex-row  flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
+                    <Cards
+                      key={i}
+                      userId={userDetail.id}
+                      categoryId={category.id}
+                      fetchCards={fetchCards}
+                    />
+                  </div>
                 </div>
               </li>
             </DroppableCategory>
@@ -135,6 +127,7 @@ const List = () => {
                 />
               </svg>
             </div>
+            {/* <p>Hello DevAcademy</p> */}
           </li>
         </button>
       </ul>
