@@ -7,15 +7,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
 import SearchBar from './SearchBar'
 
+
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 function Navbar() {
   const { logout, loginWithRedirect, user } = useAuth0()
-
-  const { userDetail, setUserDetail } = useStateContext()
-
+  const {  setUserDetail } = useStateContext()
   const navigator = useNavigate()
+
   useEffect(() => {
     if (user?.email) {
       findUser(user?.email).then((res) => {
@@ -31,11 +31,11 @@ function Navbar() {
           })
         }
         if (window.location.pathname === '/') {
-          console.log(window.location.pathname)
           navigator('/list')
         }
       })
     }
+    console.log(window.location.pathname)
   }, [user])
 
   const handleSignOut = () => {
@@ -50,22 +50,29 @@ function Navbar() {
     <>
       <nav>
 
+
         <div className="bg-perano-50 mb-1 max-w-screen flex shadow flex-wrap items-center justify-between mx-auto p-4 rounded-b-lg">
 
           <a href="/" className="flex items-center">
+
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-15 mr-3"
+              src="./assets/sip-logo.png"
+              className="w-full mr-3 "
               alt="Flowbite Logo"
             />
             <span className="text-2xl font-semibold whitespace-nowrap dark:text-white">
               S.I.P™
             </span>
           </a>
-          <div className=" sm:-order-none order-3 sm:w-1/3 w-full mt-4 sm:mt-0">
-            <SearchBar />
-          </div>
 
+          {(window.location.pathname === '/list' ||
+            window.location.pathname === '/location') && (
+            <div
+              className={`sm:-order-none order-3 sm:w-1/3 w-full mt-4 sm:mt-0`}
+            >
+              <SearchBar />
+            </div>
+          )}
           <div className="relative inline-block text-left">
             <div className="max-h-10">
               <IfNotAuthenticated>
@@ -78,21 +85,6 @@ function Navbar() {
               </IfNotAuthenticated>
 
               <IfAuthenticated>
-                {/* <div>
-                  <button
-                    onClick={handleMenu}
-                    className="rounded-full w-10 overflow-hidden"
-                  >
-                    <img className="w-full" src={user?.picture} />
-                  </button>
-                  <button
-                    onClick={handleSignOut}
-                    className=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                  >
-                    Log Out
-                  </button> 
-                  {user && <p>Signed in as: {user?.name}</p>}
-                </div> */}
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">

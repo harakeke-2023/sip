@@ -83,6 +83,7 @@ const CardCopy = (props: Props) => {
       </h1>
       <div className="flex flex-col sm:flex-row overflow-auto h-4/5 ">
         <form className=" bg-perano-100 sm:h-auto max-h-1/2 sm:min-w-3/5 w-full max-w-lg py-4 px-4 sm:py-16 sm:px-16 rounded-lg">
+
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-1 mb-2 sm:px-3 sm:mb-6 md:mb-0">
               <label
@@ -105,6 +106,7 @@ const CardCopy = (props: Props) => {
                     alert('Title should be less than 20 characters')
                   }
                 }}
+
               />
             </div>
             <div className="w-full md:w-1/2 px-3">
@@ -120,7 +122,7 @@ const CardCopy = (props: Props) => {
                 type="text"
                 required
                 disabled
-                placeholder="Location..."
+                placeholder="Find the location from Map ..."
                 value={form.location}
                 onChange={(e) => setForm({ ...form, location: e.target.value })}
               />

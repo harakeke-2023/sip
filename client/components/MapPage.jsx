@@ -4,9 +4,6 @@ import { getCardsbyUserId } from '../apis/cards'
 import { useStateContext } from '../context/StateContext'
 import { searchByAddress } from '../apis/map'
 
-
-
-
 const AnyReactComponent = ({ card }) => {
   const [open, setOpen] = useState(false)
 
@@ -58,7 +55,7 @@ const MapPage = () => {
   const [center, setCenter] = useState({ lat: -36.857703, lng: 174.761052 })
   const [allCards, setAllCards] = useState([])
   const [markers, setMarkers] = useState([])
-  const { userDetail } = useStateContext()
+  const { userDetail, search } = useStateContext()
 
   useEffect(() => {
     if (userDetail.id) {
@@ -76,20 +73,37 @@ const MapPage = () => {
     if (allCards.length) {
       Promise.all(allCards.map((card) => searchByAddress(card.location)))
         .then((coords) => {
-          setMarkers(
-            coords.map((coord, i) => (
-              <AnyReactComponent
-                key={i}
-                lat={coord.lat}
-                lng={coord.lng}
-                card={allCards[i]}
-              />
-            ))
-          )
+          console.log(coords)
+          if (search.length) {
+            setMarkers(
+              coords.map(
+                (coord, i) =>
+                  allCards[i].name.toLowerCase().includes(search.toLowerCase()) && (
+                    <AnyReactComponent
+                      key={i}
+                      lat={coord.lat}
+                      lng={coord.lng}
+                      card={allCards[i]}
+                    />
+                  )
+              )
+            )
+          } else {
+            setMarkers(
+              coords.map((coord, i) => (
+                <AnyReactComponent
+                  key={i}
+                  lat={coord.lat}
+                  lng={coord.lng}
+                  card={allCards[i]}
+                />
+              ))
+            )
+          }
         })
         .catch((error) => console.log(error))
     }
-  }, [allCards])
+  }, [allCards, search])
 
   return (
     <div className="relative" style={{ height: '100vh', width: '100vw' }}>
