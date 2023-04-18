@@ -5,6 +5,7 @@ import { findCategories } from '../apis/list'
 import { Category } from '../../models/Category'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
+
 import DroppableCategory from './DroppableCategory'
 import { FaPlus } from 'react-icons/fa'
 import { getCards } from '../apis/cards'
@@ -47,6 +48,7 @@ const List = () => {
 
   return (
     <div>
+      
       {showPopup && (
         <div
           onClick={(e: any) => {
@@ -61,49 +63,45 @@ const List = () => {
         </div>
       )}
 
-      {/* {showCardPopup && (
-        <div
-          onClick={(e: any) => {
-            if (e.target.tagName === 'DIV') {
-              setShowCardPopup((prev) => !prev)
-            }
-          }}
-          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
-          style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
-        >
-          <Cardpopup existingCard={existingCard} id={existingCard.id} />
-        </div>
-      )} */}
-
       <ul className="flex flex-col ">
         {categories.length &&
           categories.map((category: Category, i: number) => (
-            <DroppableCategory fetchCards={fetchCards} key={i} id={category.id}>
-              <li className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full ">
-                <div
-                  onClick={() => {
-                    setShowPopup((prev) => !prev)
-                    setExistingData({ ...category })
-                  }}
-                  className="text-center cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-                >
-                  <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 category_underline">
+                      <DroppableCategory fetchCards={fetchCards} key={i} id={category.id}>
+
+            <li
+              key={i}
+              className="flex flex-col sm:flex-row items-center sm:items-start bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
+            >
+              <div
+                onClick={() => {
+                  setShowPopup((prev) => !prev)
+                  setExistingData({ ...category })
+                }}
+                className=" flex flex-col mr-1 justify-center text-left cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-perano-50 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <div>
+                  <h5 className="text-3xl font-bold category_underline">
                     {category.name}
                   </h5>
-                  <p className="mt-1 text-lg text-gray-700 dark:text-gray-400">
+                </div>
+                <div>
+                  <p className="mt-2 text-lg text-gray-700 dark:text-gray-400">
                     {category.description}
                   </p>
                 </div>
+              </div>
 
-                <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                  <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
-                    <Cards
-                      key={i}
-                      userId={userDetail.id}
-                      categoryId={category.id}
-                      fetchCards={fetchCards}
-                    />
-                  </div>
+
+              <div className="flex flex-nowrap justify-center sm:justify-start items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div className="flex flex-row  flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
+
+                  <Cards
+                    key={i}
+                    userId={userDetail.id}
+                    categoryId={category.id}
+                    fetchCards={fetchCards}
+                  />
+
                 </div>
               </li>
             </DroppableCategory>

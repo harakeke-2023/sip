@@ -12,7 +12,6 @@ interface Props {
 const CardCopy = (props: Props) => {
   const [form, setForm] = useState({
     ...props.existingCard,
-    
   } as Card | CardData)
   const [isCustom, setIsCustom] = useState(false)
   const [customPeriod, setCustomPeriod] = useState({
@@ -28,7 +27,7 @@ const CardCopy = (props: Props) => {
 
   useEffect(() => {
     // setForm({ ...props.existingCard })
-    setForm(prev => ({...props.existingCard}))
+    setForm((prev) => ({ ...props.existingCard }))
     console.log('check form', form)
     console.log(props.existingCard)
   }, [props.existingCard])
@@ -78,14 +77,14 @@ const CardCopy = (props: Props) => {
   }
 
   return (
-    <div className=" bg-white rounded-lg w-4/5">
-      <h1 className="text-2xl font-bold mt-8  mb-6">
+    <div className="   bg-white rounded-lg w-4/5">
+      <h1 className="text-2xl font-bold mt-2 mb-2 sm:mt-8  sm:mb-6">
         {isNew ? 'Add Card' : 'Edit Card'}
       </h1>
-      <div className="flex">
-        <form className="min-w-3/5 max-w-lg bg-white py-16 px-16 rounded-lg">
+      <div className="flex flex-col sm:flex-row overflow-auto h-4/5 ">
+        <form className=" sm:h-auto max-h-1/2 sm:min-w-3/5 w-full max-w-lg bg-white py-4 px-4 sm:py-16 sm:px-16 rounded-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div className="w-full md:w-1/2 px-1 mb-2 sm:px-3 sm:mb-6 md:mb-0">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 htmlFor="title"
@@ -138,7 +137,7 @@ const CardCopy = (props: Props) => {
               <textarea
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="description"
-                rows={6}
+                rows={window.innerWidth < 700  ? 4 : 6}
                 placeholder="Description..."
                 value={form.description}
                 onChange={(e) =>
@@ -265,8 +264,12 @@ const CardCopy = (props: Props) => {
             </button>
           )}
         </form>
-        <div className="w-2/5 grow">
-          <CardLocation existingAddress={form.location} address={address} setAddress={setAddress} />
+        <div className="sm:w-2/5 w-full  sm:h-auto h-64 grow">
+          <CardLocation
+            existingAddress={form.location}
+            address={address}
+            setAddress={setAddress}
+          />
         </div>
       </div>
     </div>
