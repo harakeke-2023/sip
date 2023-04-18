@@ -76,7 +76,6 @@ const Cards = (props: Props) => {
         </div>
       )}
       {cards.map((card: Card) => (
-<
         <DraggableCard key={card.id} id={card.id} categoryId={props.categoryId}>
           <div
             key={card.id}
