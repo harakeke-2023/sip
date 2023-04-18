@@ -125,7 +125,10 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    }
   },
   "browserslist": "> 2%, not dead"
 }
