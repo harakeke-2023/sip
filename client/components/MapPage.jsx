@@ -5,15 +5,24 @@ import { useStateContext } from '../context/StateContext'
 import { searchByAddress } from '../apis/map'
 
 const AnyReactComponent = ({ card }) => (
-  <div className="rounded-xl  py-4 px-2"
-    style={{border: "2px solid rgba(251, 146, 60)", width: "fit-content", backgroundColor: "rgba(255, 255, 255, 0.4)"}}
+  <div
+    className="rounded-xl  py-4 px-2"
+    style={{
+      border: '2px solid rgba(251, 146, 60)',
+      width: 'fit-content',
+      backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    }}
   >
-    <div className='mt-4 mb-4 px-4'>
-
-      <h2 className="font-bold" style={{fontSize: "2.8rem"}}>{card.name}</h2>
-      <p className='mt-4' style={{fontSize: "1.4rem"}} >{card.description}</p>
-      <p className='mt-4' style={{fontSize: "1.4rem"}} >{card.location}</p>
-
+    <div className="mt-4 mb-4 px-4">
+      <h2 className="font-bold" style={{ fontSize: '2.8rem' }}>
+        {card.name}
+      </h2>
+      <p className="mt-4" style={{ fontSize: '1.4rem' }}>
+        {card.description}
+      </p>
+      <p className="mt-4" style={{ fontSize: '1.4rem' }}>
+        {card.location}
+      </p>
     </div>
   </div>
 )
@@ -60,24 +69,7 @@ const MapPage = () => {
         defaultCenter={center}
         defaultZoom={13}
       >
-        {/* {allCards.length &&
-          allCards.map( async (card, i) => {
-            if (!card.location) {
-              return null
-            }
-            const coords = await searchByAddress(card.location)
-            console.log(coords)
-            return (
-              <AnyReactComponent
-                key={i}
-                lat={coords.lat}
-                lng={coords.lng}
-                text="My Marker"
-              />
-            )
-          })} */}
         {markers}
-        {/* <i class="fa-sharp fa-solid fa-location-dot"></i> */}
       </GoogleMapReact>
     </div>
   )

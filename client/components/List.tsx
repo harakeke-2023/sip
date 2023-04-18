@@ -69,7 +69,7 @@ const List = () => {
           categories.map((category: Category, i: number) => (
             <li
               key={i}
-              className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
+              className="flex flex-col sm:flex-row items-center sm:items-start bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
             >
               <div
                 onClick={() => {
@@ -86,8 +86,8 @@ const List = () => {
                 </p>
               </div>
 
-              <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
+              <div className="flex flex-nowrap justify-center sm:justify-start items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div className="flex flex-row  flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
                   <Cards
                     key={i}
                     userId={userDetail.id}
