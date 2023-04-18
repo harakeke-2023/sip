@@ -91,7 +91,7 @@ const CardCopy = (props: Props) => {
                   Title
                 </label>
                 <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  className="appearance-none block w-full bg-gray-100 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                   id="title"
                   type="text"
                   placeholder="Title..."
@@ -114,7 +114,7 @@ const CardCopy = (props: Props) => {
                   Location
                 </label>
                 <input
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="location"
                   type="text"
                   required
@@ -136,7 +136,7 @@ const CardCopy = (props: Props) => {
                   Description
                 </label>
                 <textarea
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="description"
                   rows={window.innerWidth < 700 ? 4 : 6}
                   placeholder="Description..."
@@ -161,7 +161,7 @@ const CardCopy = (props: Props) => {
                 </label>
                 <div className="relative ">
                   <select
-                    className="justify-self-center block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="justify-self-center block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-state"
                     required
                     onChange={(e) => {
