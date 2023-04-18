@@ -5,6 +5,7 @@ import { findCategories } from '../apis/list'
 import { Category } from '../../models/Category'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
+import DroppableCategory from './DroppableCategory'
 import { FaPlus } from 'react-icons/fa'
 
 const List = () => {
@@ -67,35 +68,37 @@ const List = () => {
       <ul className="flex flex-wrap ">
         {categories.length &&
           categories.map((category: Category, i: number) => (
-            <li
-              key={i}
-              className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
-            >
-              <div
-                onClick={() => {
-                  setShowPopup((prev) => !prev)
-                  setExistingData({ ...category })
-                }}
-                className="text-center cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+            <DroppableCategory key={i} id={category.id}>
+              <li
+                key={i}
+                className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
               >
-                <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 category_underline">
-                  {category.name}
-                </h5>
-                <p className="mt-1 text-lg text-gray-700 dark:text-gray-400">
-                  {category.description}
-                </p>
-              </div>
-
-              <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
-                  <Cards
-                    key={i}
-                    userId={userDetail.id}
-                    categoryId={category.id}
-                  />
+                <div
+                  onClick={() => {
+                    setShowPopup((prev) => !prev)
+                    setExistingData({ ...category })
+                  }}
+                  className="text-center cursor-pointer w-64 h-65 overflow-auto flex-shrink-0 min-w-0 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                >
+                  <h5 className="mb-2 text-3xl font-bold text-blue-500 dark:text-blue-300 category_underline">
+                    {category.name}
+                  </h5>
+                  <p className="mt-1 text-lg text-gray-700 dark:text-gray-400">
+                    {category.description}
+                  </p>
                 </div>
-              </div>
-            </li>
+
+                <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                  <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
+                    <Cards
+                      key={i}
+                      userId={userDetail.id}
+                      categoryId={category.id}
+                    />
+                  </div>
+                </div>
+              </li>
+            </DroppableCategory>
           ))}
         <button>
           <li className="flex w-full">
