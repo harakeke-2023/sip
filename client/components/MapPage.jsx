@@ -11,29 +11,39 @@ const AnyReactComponent = ({ card }) => {
     <>
       {open ? (
         <div
-          className="rounded-xl  py-4 px-2"
+          className="rounded-xl py-4 px-2"
           style={{
             border: '2px solid rgba(251, 146, 60)',
             width: 'fit-content',
-            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.2)',
+            borderRadius: '10px',
+            transform: 'translateY(-100%)',
           }}
         >
           <div className="mt-4 mb-4 px-4">
-            <h2 className="font-bold" style={{ fontSize: '2.8rem' }}>
+            <h2 className="font-bold text-2xl" style={{ color: '#4B5563' }}>
               {card.name}
             </h2>
 
-            <p className="mt-4" style={{ fontSize: '1.4rem' }}>
-              {card.location}
-            </p>
-            <button onClick={() => setOpen((prev) => !prev)}>Close</button>
+            <p className="mt-2 text-gray-500 text-sm">{card.location}</p>
+
+            <button
+              onClick={() => setOpen((prev) => !prev)}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded"
+              style={{
+                transition: 'all 0.2s ease-in-out',
+              }}
+            >
+              Close
+            </button>
           </div>
         </div>
       ) : (
         <div onClick={() => setOpen((prev) => !prev)}>
           <i
+            style={{ transform: 'translateY(-100%)', fontSize: '2.4rem' }}
             className="fa-sharp fa-solid fa-location-dot"
-            style={{ fontSize: '2.4rem' }}
           ></i>
         </div>
       )}
