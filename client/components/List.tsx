@@ -5,8 +5,6 @@ import { useStateContext } from '../context/StateContext'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
 
-import { FaPlus } from 'react-icons/fa'
-
 const List = () => {
   const { userDetail } = useStateContext()
   const [categories, setCategories]: any[] = useState([])
@@ -51,26 +49,12 @@ const List = () => {
         </div>
       )}
 
-      {/* {showCardPopup && (
-        <div
-          onClick={(e: any) => {
-            if (e.target.tagName === 'DIV') {
-              setShowCardPopup((prev) => !prev)
-            }
-          }}
-          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
-          style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
-        >
-          <Cardpopup existingCard={existingCard} id={existingCard.id} />
-        </div>
-      )} */}
-
       <ul className="flex flex-wrap ">
         {categories.length &&
           categories.map((category: Category, i: number) => (
             <li
               key={i}
-              className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full mb-1 mx-1 "
+              className="flex flex-col sm:flex-row items-center sm:items-start bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
             >
               <div
                 onClick={() => {
@@ -91,8 +75,10 @@ const List = () => {
                 </div>
               </div>
 
-              <div className="flex flex-nowrap items-start w-full h-65 overflow-hidden p-6 bg-perano-50 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <div className="flex flex-row flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
+
+              <div className="flex flex-nowrap justify-center sm:justify-start items-start w-full h-65 overflow-hidden p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div className="flex flex-row  flex-nowrap overflow-x-auto -webkit-overflow-scrolling: touch;">
+
                   <Cards
                     key={i}
                     userId={userDetail.id}
