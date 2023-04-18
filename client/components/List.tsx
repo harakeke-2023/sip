@@ -7,6 +7,7 @@ import Categorypopup from './Categorypopup'
 import Cards from './Cards'
 import DroppableCategory from './DroppableCategory'
 import { FaPlus } from 'react-icons/fa'
+import { getCards } from '../apis/cards'
 
 const List = () => {
   const { userDetail } = useStateContext()
@@ -33,6 +34,15 @@ const List = () => {
 
   const handleCreateCategory = () => {
     setShowPopup((prev) => !prev)
+  }
+
+  async function fetchCards(userId: number, setState: (prev: any) => void) {
+    try {
+      const res = await getCards(userId)
+      setState(() => [...res])
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -65,14 +75,11 @@ const List = () => {
         </div>
       )} */}
 
-      <ul className="flex flex-wrap ">
+      <ul className="flex flex-col ">
         {categories.length &&
           categories.map((category: Category, i: number) => (
-            <DroppableCategory key={i} id={category.id}>
-              <li
-                key={i}
-                className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full "
-              >
+            <DroppableCategory fetchCards={fetchCards} key={i} id={category.id}>
+              <li className="flex bg-white dark:bg-gray-800 rounded-lg shadow-md w-full ">
                 <div
                   onClick={() => {
                     setShowPopup((prev) => !prev)
@@ -94,6 +101,7 @@ const List = () => {
                       key={i}
                       userId={userDetail.id}
                       categoryId={category.id}
+                      fetchCards={fetchCards}
                     />
                   </div>
                 </div>
