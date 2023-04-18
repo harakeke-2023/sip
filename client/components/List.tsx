@@ -5,8 +5,6 @@ import { useStateContext } from '../context/StateContext'
 import Categorypopup from './Categorypopup'
 import Cards from './Cards'
 
-import { FaPlus } from 'react-icons/fa'
-
 const List = () => {
   const { userDetail } = useStateContext()
   const [categories, setCategories]: any[] = useState([])
@@ -49,20 +47,6 @@ const List = () => {
           <Categorypopup id={existingData.id} existingCategory={existingData} />
         </div>
       )}
-
-      {/* {showCardPopup && (
-        <div
-          onClick={(e: any) => {
-            if (e.target.tagName === 'DIV') {
-              setShowCardPopup((prev) => !prev)
-            }
-          }}
-          className="flex justify-center items-center fixed top-0 left-0 z-10 h-screen w-screen text-center "
-          style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
-        >
-          <Cardpopup existingCard={existingCard} id={existingCard.id} />
-        </div>
-      )} */}
 
       <ul className="flex flex-wrap ">
         {categories.length &&
