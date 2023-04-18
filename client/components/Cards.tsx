@@ -2,8 +2,10 @@ import { CardDetails } from './CardDetails'
 import { useEffect, useState } from 'react'
 import { getCards, updateCard } from '../apis/cards'
 import { useStateContext } from '../context/StateContext'
+import { useDrag } from 'react-dnd'
 
 import { Card, CardData } from '../../models/Card'
+import DraggableCard from './DraggableCard'
 import GetTimeLeft from './GetDate'
 import CardCopy from './CardCopy'
 import { FaPlus } from 'react-icons/fa'
@@ -11,10 +13,11 @@ import { FaPlus } from 'react-icons/fa'
 interface Props {
   categoryId: number
   userId: number
+  fetchCards: (categoryId: number, setState: (prev: any) => void) => void
 }
 
 const Cards = (props: Props) => {
-  const { userDetail } = useStateContext()
+  const { userDetail, globalCards } = useStateContext()
   const [cards, setCards] = useState([] as Card[])
   const [showCardPopup, setShowCardPopup] = useState(false)
   const [existingCard, setExistingCard] = useState({
@@ -30,30 +33,28 @@ const Cards = (props: Props) => {
     comp_count: 0,
   } as Card | CardData)
 
-  async function fetchCards(userId: number) {
-    try {
-      const res = await getCards(userId)
-      setCards(() => [...res])
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
   useEffect(() => {
     if (props.categoryId) {
-      fetchCards(props.categoryId)
+      props.fetchCards(props.categoryId, setCards)
     }
   }, [props.categoryId])
 
+  useEffect(() => {
+    console.log('setglobal')
+    if (globalCards.length) {
+      setCards([...globalCards])
+    }
+  }, [globalCards])
+
   async function handleComplete(e: any, card: Card) {
     await handleCardUpdate({ ...card, completed: e.target.checked })
-    await fetchCards(props.categoryId)
+    await props.fetchCards(props.categoryId, setCards)
     console.log('card', card.completed)
   }
 
   async function handleCardUpdate(updatedCard: Card) {
     await updateCard(updatedCard)
-    fetchCards(props.categoryId)
+    await props.fetchCards(props.categoryId, setCards)
     console.log('updated card', updatedCard.completed)
   }
 
@@ -79,6 +80,9 @@ const Cards = (props: Props) => {
         </div>
       )}
       {cards.map((card: Card) => (
+
+        <DraggableCard key={card.id} id={card.id} categoryId={props.categoryId}>
+
         <div
           key={card.id}
 
@@ -150,7 +154,7 @@ const Cards = (props: Props) => {
               />
             </div>
           </div>
-        </div>
+        </DraggableCard>
       ))}
 
       <button
