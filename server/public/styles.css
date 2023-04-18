@@ -796,10 +796,6 @@ video {
   margin: 0px;
 }
 
-.m-1 {
-  margin: 0.25rem;
-}
-
 .\!my-0 {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
@@ -865,6 +861,10 @@ video {
   margin-bottom: 10px;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -887,6 +887,10 @@ video {
 
 .ml-auto {
   margin-left: auto;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
 }
 
 .mr-2 {
@@ -939,14 +943,6 @@ video {
 
 .mt-\[0\.15rem\] {
   margin-top: 0.15rem;
-}
-
-.mr-1 {
-  margin-right: 0.25rem;
-}
-
-.ml-1 {
-  margin-left: 0.25rem;
 }
 
 .box-border {
