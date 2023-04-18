@@ -103,6 +103,7 @@ const List = () => {
                   />
 
                 </div>
+                </div>
               </li>
             </DroppableCategory>
           ))}
