@@ -4,6 +4,9 @@ import { getCardsbyUserId } from '../apis/cards'
 import { useStateContext } from '../context/StateContext'
 import { searchByAddress } from '../apis/map'
 
+
+
+
 const AnyReactComponent = ({ card }) => {
   const [open, setOpen] = useState(false)
 

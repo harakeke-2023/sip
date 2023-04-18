@@ -5,6 +5,7 @@ import { IfAuthenticated, IfNotAuthenticated } from '../config/Authenticated'
 import { addUser, findUser } from '../apis/users'
 import { Link, useNavigate } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
+import SearchBar from './SearchBar'
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
@@ -34,7 +35,6 @@ function Navbar() {
           navigator('/list')
         }
       })
-
     }
   }, [user])
 
@@ -49,7 +49,7 @@ function Navbar() {
   return (
     <>
       <nav>
-        <div className="mb-2 mt-2 max-w-screen flex items-center justify-between mx-auto p-4">
+        <div className="mb-2 mt-2 max-w-screen flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/" className="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
@@ -60,6 +60,9 @@ function Navbar() {
               S.I.P™
             </span>
           </a>
+          <div className=" sm:-order-none order-3 sm:w-1/3 w-full mt-4 sm:mt-0">
+            <SearchBar />
+          </div>
 
           <div className="relative inline-block text-left">
             <div className="max-h-10">
