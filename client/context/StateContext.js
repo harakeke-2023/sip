@@ -6,6 +6,7 @@ export const StateContext = ({ children }) => {
   const [userDetail, setUserDetail] = useState({})
   const [mapAPI, setMapAPI] = useState('')
   const [globalCards, setGlobalCards] = useState([])
+  const [search, setSearch] = useState("")
 
   return (
     <UserContext.Provider
@@ -14,6 +15,8 @@ export const StateContext = ({ children }) => {
         setUserDetail,
         globalCards,
         setGlobalCards,
+        search,
+        setSearch
       }}
     >
       {children}

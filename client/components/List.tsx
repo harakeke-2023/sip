@@ -74,6 +74,7 @@ const List = () => {
                 }}
               >
                 <div className=" mr-1 ml-1 flex flex-col justify-center text-left cursor-pointer w-full sm:w-64 overflow-auto flex-shrink-0 min-w-0 p-6  bg-perano-50 border-perano-300 border-2 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
                   <div>
                     <h5 className="text-3xl font-bold category_underline">
                       {category.name}

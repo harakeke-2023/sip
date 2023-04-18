@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Card } from '../../models/Card'
-import { getCards, getCardsbyUserId } from '../apis/cards'
+import { getCardsbyUserId } from '../apis/cards'
 import CompletedTasksBarChart from './Chart'
 import { useStateContext } from '../context/StateContext'
 import { findCategories } from '../apis/list'
-import { Category } from '../../models/Category'
+
 
 const UserStats = () => {
   const [cards, setCards] = useState([] as Card[])
@@ -26,6 +26,11 @@ const UserStats = () => {
     getCardsbyUserId(userDetail.id).then((res) => setCards(() => res)).catch
   }, [])
 
+  useEffect(() => {
+    console.log(categories)
+  }, [categories])
+
+
   const arr: string[] = []
 
   const wordsToSentence = (words: string[]) => {
@@ -44,7 +49,7 @@ const UserStats = () => {
 
   return (
     <div className="flex flex-wrap w-screen p-4 bg-gray-100 flex-col">
-      {' '}
+
       {categories.map((category: Card, i: number) => {
         let totalComp = 0
         let totalCount = 0

@@ -17,7 +17,7 @@ interface Props {
 }
 
 const Cards = (props: Props) => {
-  const { userDetail, globalCards } = useStateContext()
+  const { userDetail, globalCards, search } = useStateContext()
   const [cards, setCards] = useState([] as Card[])
   const [showCardPopup, setShowCardPopup] = useState(false)
   const [existingCard, setExistingCard] = useState({
@@ -32,6 +32,7 @@ const Cards = (props: Props) => {
     total_count: 0,
     comp_count: 0,
   } as Card | CardData)
+  const [cardsBySearch, setCardsBySearch] = useState([] as Card[])
 
   useEffect(() => {
     if (props.categoryId) {
@@ -40,11 +41,20 @@ const Cards = (props: Props) => {
   }, [props.categoryId])
 
   useEffect(() => {
-    console.log('setglobal')
     if (globalCards.length) {
       setCards([...globalCards])
     }
   }, [globalCards])
+
+  useEffect(() => {
+    if (search.length) {
+      setCardsBySearch(cards.filter((card) => card.name.toLowerCase().includes(search.toLowerCase())))
+    } else {
+      if (cards.length) {
+        setCardsBySearch(cards)
+      }
+    }
+  }, [search, cards])
 
   async function handleComplete(e: any, card: Card) {
     await handleCardUpdate({ ...card, completed: e.target.checked })
@@ -75,7 +85,7 @@ const Cards = (props: Props) => {
           <CardCopy existingCard={existingCard} userId={props.userId} />
         </div>
       )}
-      {cards.map((card: Card) => (
+      {cardsBySearch.map((card: Card) => (
         <DraggableCard key={card.id} id={card.id} categoryId={props.categoryId}>
           <div
             key={card.id}
