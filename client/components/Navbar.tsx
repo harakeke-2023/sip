@@ -53,7 +53,7 @@ function Navbar() {
 
         <div className="bg-perano-50 mb-1 max-w-screen flex shadow flex-wrap items-center justify-between mx-auto p-4 rounded-b-lg">
 
-          <a href="/" className="flex items-center">
+          <a href="/" className="flex items-center w-12">
 
             <img
               src="./assets/sip-logo.png"
