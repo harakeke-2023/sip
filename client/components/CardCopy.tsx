@@ -82,7 +82,7 @@ const CardCopy = (props: Props) => {
         {isNew ? 'Add Card' : 'Edit Card'}
       </h1>
       <div className="flex flex-col sm:flex-row overflow-auto h-4/5 ">
-        <form className=" bg-perano-100 sm:h-auto max-h-1/2 sm:min-w-3/5 w-full max-w-lg bg-white py-4 px-4 sm:py-16 sm:px-16 rounded-lg">
+        <form className=" bg-perano-100 sm:h-auto max-h-1/2 sm:min-w-3/5 w-full max-w-lg py-4 px-4 sm:py-16 sm:px-16 rounded-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-1 mb-2 sm:px-3 sm:mb-6 md:mb-0">
               <label
@@ -171,12 +171,11 @@ const CardCopy = (props: Props) => {
                       setIsCustom(false)
                     }
                   }}
-                >                  
+                >
                   <option value={86400000}>Daily</option>
                   <option value={604800000}>Weekly</option>
                   <option value={1209600000}>Fortnightly</option>
                   <option value={0}>Custom</option>
-                  
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg
