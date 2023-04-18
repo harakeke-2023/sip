@@ -51,12 +51,6 @@ const AnyReactComponent = ({ card }) => {
   )
 }
 
-// const MarkersComponent = () => {
-//   return (
-
-//   )
-// }
-
 const MapPage = () => {
   const [center, setCenter] = useState({ lat: -36.857703, lng: 174.761052 })
   const [allCards, setAllCards] = useState([])
@@ -65,7 +59,9 @@ const MapPage = () => {
 
   useEffect(() => {
     if (userDetail.id) {
-      getCardsbyUserId(userDetail.id).then((res) => setAllCards(res))
+      getCardsbyUserId(userDetail.id)
+        .then((res) => setAllCards(res))
+        .catch((error) => console.log(error))
     }
   }, [userDetail])
 
@@ -75,8 +71,8 @@ const MapPage = () => {
 
   useEffect(() => {
     if (allCards.length) {
-      Promise.all(allCards.map((card) => searchByAddress(card.location))).then(
-        (coords) => {
+      Promise.all(allCards.map((card) => searchByAddress(card.location)))
+        .then((coords) => {
           setMarkers(
             coords.map((coord, i) => (
               <AnyReactComponent
@@ -87,8 +83,8 @@ const MapPage = () => {
               />
             ))
           )
-        }
-      )
+        })
+        .catch((error) => console.log(error))
     }
   }, [allCards])
 
@@ -99,22 +95,6 @@ const MapPage = () => {
         defaultCenter={center}
         defaultZoom={13}
       >
-        {/* {allCards.length &&
-          allCards.map( async (card, i) => {
-            if (!card.location) {
-              return null
-            }
-            const coords = await searchByAddress(card.location)
-            console.log(coords)
-            return (
-              <AnyReactComponent
-                key={i}
-                lat={coords.lat}
-                lng={coords.lng}
-                text="My Marker"
-              />
-            )
-          })} */}
         {markers}
       </GoogleMapReact>
     </div>
