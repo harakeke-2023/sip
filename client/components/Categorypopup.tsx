@@ -60,24 +60,24 @@ const CategoryPopup = (props: Props) => {
   }
 
   return (
-    <div className="bg-white rounded-lg">
+    <div className="bg-perano-100 rounded-lg">
       <h1 className="text-2xl font-bold mt-8  mb-6">
         {isNew ? 'ADD CATEGORY' : 'Edit Card'}
       </h1>
-      <form className="w-full max-w-lg bg-white py-16 px-16 rounded-lg">
+      <form className="w-full max-w-lg bg-perano-100 py-16 px-16 rounded-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
             <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
               htmlFor="title"
             >
               Name
             </label>
             <input
               type="text"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-perano-50 text-black rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-600"
               id="exampleInput7"
-              placeholder="Name"
+              placeholder="Name..."
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -87,16 +87,16 @@ const CategoryPopup = (props: Props) => {
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
             <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
               htmlFor="description"
             >
               Description
             </label>
             <textarea
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-perano-50 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-600"
               id="exampleFormControlTextarea13"
               rows={3}
-              placeholder="Message"
+              placeholder="Description..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />

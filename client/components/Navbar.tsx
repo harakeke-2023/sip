@@ -49,8 +49,12 @@ function Navbar() {
   return (
     <>
       <nav>
-        <div className="mb-2 mt-2 max-w-screen flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="/" className="flex items-center w-12">
+
+
+        <div className="bg-perano-50 mb-1 max-w-screen flex shadow flex-wrap items-center justify-between mx-auto p-4 rounded-b-lg">
+
+          <a href="/" className="flex items-center">
+
             <img
               src="./assets/sip-logo.png"
               className="w-full mr-3 "
