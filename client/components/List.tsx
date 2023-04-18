@@ -126,8 +126,7 @@ const List = () => {
                                     C15.952,9,16,9.447,16,10z"
                 />
               </svg>
-            </div>
-            {/* <p>Hello DevAcademy</p> */}
+            </div>           
           </li>
         </button>
       </ul>
