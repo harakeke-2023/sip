@@ -7,13 +7,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
 import SearchBar from './SearchBar'
 
-
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 function Navbar() {
   const { logout, loginWithRedirect, user } = useAuth0()
-  const {  setUserDetail } = useStateContext()
+  const { setUserDetail } = useStateContext()
   const navigator = useNavigate()
 
   useEffect(() => {
@@ -28,12 +27,12 @@ function Navbar() {
             email: user?.email,
           }).then((res) => {
             setUserDetail(res[0])
-          })
+          }).catch(err => console.log(err))
         }
         if (window.location.pathname === '/') {
           navigator('/list')
         }
-      })
+      }).catch(err => console.log(err))
     }
     console.log(window.location.pathname)
   }, [user])
@@ -49,12 +48,8 @@ function Navbar() {
   return (
     <>
       <nav>
-
-
         <div className="bg-perano-50 mb-1 max-w-screen flex shadow flex-wrap items-center justify-between mx-auto p-4 rounded-b-lg">
-
           <a href="/" className="flex items-center w-12">
-
             <img
               src="./assets/sip-logo.png"
               className="w-full mr-3 "

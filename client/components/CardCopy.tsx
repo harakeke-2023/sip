@@ -136,7 +136,7 @@ const CardCopy = (props: Props) => {
                 Description
               </label>
               <textarea
-                className="bg-perano-50 appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="bg-perano-50 appearance-none block w-full text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="description"
                 rows={window.innerWidth < 700 ? 4 : 6}
                 placeholder="Description..."
@@ -159,6 +159,7 @@ const CardCopy = (props: Props) => {
               >
                 Period
               </label>
+
               <div className="relative">
                 <select
                   className="bg-perano-50 justify-self-center block appearance-none w-full  text-gray-800 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white"
@@ -265,7 +266,7 @@ const CardCopy = (props: Props) => {
             </button>
           )}
         </form>
-        <div className="sm:w-2/5 w-full  sm:h-auto h-64 grow">
+        <div className="sm:w-2/5 w-full  sm:h-auto h-64 grow m-6">
           <CardLocation
             existingAddress={form.location}
             address={address}

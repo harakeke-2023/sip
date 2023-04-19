@@ -126,7 +126,6 @@ const List = () => {
                 />
               </svg>
             </div>
-            {/* <p>Hello DevAcademy</p> */}
           </li>
         </button>
       </ul>
