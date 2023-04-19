@@ -48,7 +48,11 @@ const Cards = (props: Props) => {
 
   useEffect(() => {
     if (search.length) {
-      setCardsBySearch(cards.filter((card) => card.name.toLowerCase().includes(search.toLowerCase())))
+      setCardsBySearch(
+        cards.filter((card) =>
+          card.name.toLowerCase().includes(search.toLowerCase())
+        )
+      )
     } else {
       if (cards.length) {
         setCardsBySearch(cards)
