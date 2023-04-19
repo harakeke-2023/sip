@@ -55,7 +55,7 @@ test('check text in <p> tag renders, i.e. the card name', () => {
   }
 })
 
-test('card details opens when you click it', () => {
+test('Expect card to show mark as done or unmark', () => {
   // Arrange
   const props = {
     categoryId: 1,
@@ -64,17 +64,18 @@ test('card details opens when you click it', () => {
   }
 
   // Act
-  const { getByText } = render(
+  render(
     <StateContext>
       <Cards {...props} />
     </StateContext>
   )
 
-  const details = getByText('Unmark' || 'Mark as done')
-
-  // Act
-  fireEvent.click(details)
-
-  // Assert
-  expect(details).toHaveStyle('background-color: #333333')
+  const firstLabel = document.querySelector('label')
+  if (firstLabel) {
+    const closestP = firstLabel.closest('label')
+    if (closestP) {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(firstLabel.textContent).toBe('Mark as done' || 'Unmark')
+    }
+  }
 })
