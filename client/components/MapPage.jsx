@@ -11,7 +11,7 @@ const AnyReactComponent = ({ card }) => {
     <>
       {open ? (
         <div
-          className="rounded-xl py-4 px-2"
+          className="rounded-xl py-4 px-2 map-pin"
           style={{
             border: '2px solid rgba(251, 146, 60)',
             width: 'fit-content',
