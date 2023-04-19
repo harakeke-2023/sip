@@ -9,7 +9,7 @@ export function getData(
   dbName: 'users' | 'categories' | 'cards',
   id: number,
   db = connection
-): Promise<CombinedData[]> {
+) {
   if (dbName === 'users') {
     return db('users').where('id', id).select()
   } else if (dbName === 'cards') {
