@@ -88,6 +88,7 @@ const CardLocation = ({ address, setAddress, existingAddress }) => {
     // Clear the search suggestions
     setSearchSuggestions([])
 
+    // eslint-disable-next-line promise/catch-or-return
     getAddressFromCoordinates({ lat, lng }).then((res) =>
       setAddress(res.split(','))
     )
@@ -125,6 +126,7 @@ const CardLocation = ({ address, setAddress, existingAddress }) => {
           setCenter({ lat: e.lat, lng: e.lng })
           // Set the marker at the selected suggestion
           marker.setPosition({ lat: e.lat, lng: e.lng })
+          // eslint-disable-next-line promise/catch-or-return
           getAddressFromCoordinates({ lat: e.lat, lng: e.lng }).then((res) =>
             setAddress(() => res.split(','))
           )
