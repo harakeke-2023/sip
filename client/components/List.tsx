@@ -66,15 +66,14 @@ const List = () => {
         {categories.length &&
           categories.map((category: Category, i: number) => (
             <DroppableCategory key={i} fetchCards={fetchCards} id={category.id}>
-              <li
-                className="flex flex-col sm:flex-row items-center sm:items-stretch bg-white dark:bg-gray-800 rounded-lg shadow-md w-full mb-1  "
-                onClick={() => {
-                  setShowPopup((prev) => !prev)
-                  setExistingData({ ...category })
-                }}
-              >
-                <div className=" mr-1 ml-1 flex flex-col justify-center text-left cursor-pointer w-full sm:w-64 overflow-auto flex-shrink-0 min-w-0 p-6  bg-perano-50 border-perano-300 border-2 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-
+              <li className="flex flex-col sm:flex-row items-center sm:items-stretch bg-white dark:bg-gray-800 rounded-lg shadow-md w-full mb-1  ">
+                <div
+                  onClick={() => {
+                    setShowPopup((prev) => !prev)
+                    setExistingData({ ...category })
+                  }}
+                  className=" mr-1 ml-1 flex flex-col justify-center text-left cursor-pointer w-full sm:w-64 overflow-auto flex-shrink-0 min-w-0 p-6  bg-perano-50 border-perano-300 border-2 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                >
                   <div>
                     <h5 className="text-3xl font-bold category_underline">
                       {category.name}
@@ -126,13 +125,12 @@ const List = () => {
                                     C15.952,9,16,9.447,16,10z"
                 />
               </svg>
-            </div>           
+            </div>
           </li>
         </button>
       </ul>
     </div>
   )
 }
-
 
 export default List
