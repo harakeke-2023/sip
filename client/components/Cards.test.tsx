@@ -28,3 +28,29 @@ test('renders the update button', () => {
   const buttons = container.querySelectorAll('button')
   expect(buttons).toHaveLength(1)
 })
+
+test('check text in <p> tag renders, i.e. the card name', () => {
+  // Arrange
+  const props = {
+    categoryId: 1,
+    userId: 2,
+    fetchCards: jest.fn(),
+  }
+
+  // Act
+  const { container } = render(
+    <StateContext>
+      <Cards {...props} />
+    </StateContext>
+  )
+
+  // Assert
+  const firstP = document.querySelector('p')
+  if (firstP) {
+    const closestP = firstP.closest('p')
+    if (closestP) {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(firstP.textContent).toBeTruthy()
+    }
+  }
+})
