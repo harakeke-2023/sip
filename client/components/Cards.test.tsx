@@ -54,3 +54,27 @@ test('check text in <p> tag renders, i.e. the card name', () => {
     }
   }
 })
+
+test('card details opens when you click it', () => {
+  // Arrange
+  const props = {
+    categoryId: 1,
+    userId: 2,
+    fetchCards: jest.fn(),
+  }
+
+  // Act
+  const { getByText } = render(
+    <StateContext>
+      <Cards {...props} />
+    </StateContext>
+  )
+
+  const details = getByText('Unmark' || 'Mark as done')
+
+  // Act
+  fireEvent.click(details)
+
+  // Assert
+  expect(details).toHaveStyle('background-color: #333333')
+})
