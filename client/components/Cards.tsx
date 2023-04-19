@@ -89,9 +89,10 @@ const Cards = (props: Props) => {
         <DraggableCard key={card.id} id={card.id} categoryId={props.categoryId}>
           <div
             key={card.id}
-            className={`text-center flex  mr-1 flex-col justify-between items-center border rounded-lg shadow p-4 ${
+            className={`text-center flex h-full  mr-1 flex-col justify-between items-center border rounded-lg shadow p-4 ${
               card.completed ? 'bg-slate-300' : 'bg-white'
             } ${!card.completed && 'hover:bg-perano-100'}`}
+
             // style={{ background: 'hover:bg-slate-400' }}
           >
             <div className="flex flex-col min-h-1/5 justify-between">

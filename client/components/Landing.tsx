@@ -4,6 +4,7 @@ import VimeoPlayer from '@vimeo/player'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import Hero from './Hero'
 
 const Landing = () => {
   const [video, setVideo] = useState(false)
@@ -95,7 +96,7 @@ const Landing = () => {
                 <div className="text-center text-white px-6 md:px-12   h-full flex flex-col items-center justify-between pb-24 pt-20 ">
                   <h1 className=" text-2xl sm:text-4xl md:text-6xl xl:text-7xl font-bold tracking-tight ">
                     <span className="block">
-                      Hello world is me, Hello world is me, Hello world is me
+                      If you improve by 1% every day, within a year you'll have improved by 365%
                     </span>
                   </h1>
                   <Link
@@ -114,7 +115,7 @@ const Landing = () => {
           </div>
         </section>
       </div>
-
+      <Hero />
       {/* 735927919 for portlait */}
     </div>
   )

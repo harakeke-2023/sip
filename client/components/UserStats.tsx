@@ -5,7 +5,6 @@ import CompletedTasksBarChart from './Chart'
 import { useStateContext } from '../context/StateContext'
 import { findCategories } from '../apis/list'
 
-
 const UserStats = () => {
   const [cards, setCards] = useState([] as Card[])
   const { userDetail } = useStateContext()
@@ -30,7 +29,6 @@ const UserStats = () => {
     console.log(categories)
   }, [categories])
 
-
   const arr: string[] = []
 
   const wordsToSentence = (words: string[]) => {
@@ -48,8 +46,7 @@ const UserStats = () => {
   }
 
   return (
-    <div className="flex flex-wrap w-screen p-4 bg-gray-100 flex-col">
-
+    <div className=" flex flex-wrap w-screen p-4 bg-perano-50 flex-col">
       {categories.map((category: Card, i: number) => {
         let totalComp = 0
         let totalCount = 0
@@ -75,7 +72,7 @@ const UserStats = () => {
           return null
         }
       })}
-      No data yet for {wordsToSentence(arr)}.
+      {wordsToSentence(arr) && `No data yet for ${wordsToSentence(arr)}.`}
     </div>
   )
 }
