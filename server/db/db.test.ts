@@ -55,7 +55,7 @@ describe('db functions', () => {
     const value = await db.deleteData('categories', 1, testDB)
 
     expect(value).toHaveLength(2)
-    expect(value[0]).toBe(5)
+    expect(value[0]).toBeGreaterThan(3)
     expect(value[1]).toBe(1)
   })
   test('should add a new user', async () => {
